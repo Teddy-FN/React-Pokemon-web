@@ -1,6 +1,7 @@
 import React from "react";
 import { Icons, Images } from "../../../assets";
 import "./mainMenu.css";
+import { Link } from "react-router-dom";
 
 const MainMenu = () => {
   console.log(Icons);
@@ -9,12 +10,14 @@ const MainMenu = () => {
       <nav>
         <ul className="main-features">
           <li className="main-logo">
-            <img src={Images.PokeLogo} alt="pokeBall" className="img-logo" />
+            <Link to="/home">
+              <img src={Images.PokeLogo} alt="pokeBall" className="img-logo" />
+            </Link>
           </li>
           <li className="main-items">
-            <a href="#">
+            <Link to="/home">
               <Icons.RiHome3Line className="main-icons" />
-            </a>
+            </Link>
           </li>
           <li className="main-items">
             <a href="#">
@@ -54,10 +57,10 @@ const MainMenu = () => {
           <a href="#" className="notifcation">
             <Icons.RiNotification3Line />
           </a>
-          <a href="#" className="login">
+          <Link to="/login">
             <Icons.RiMapPinUserLine />
             Login / Sign up
-          </a>
+          </Link>
         </div>
       </menu>
       <aside className="aside">

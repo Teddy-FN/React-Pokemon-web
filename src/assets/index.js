@@ -1,5 +1,6 @@
 import PokeLogo from "./img/pokeball.png";
 import PokemonPage from "./img/pokemonHeader.jpg";
+import pickachu from "./img/pikachu.jpg";
 
 import { RiHome3Line } from "react-icons/ri";
 import { RiStore3Line } from "react-icons/ri";
@@ -28,4 +29,5 @@ export const Icons = {
 export const Images = {
   PokeLogo,
   PokemonPage,
+  pickachu,
 };
