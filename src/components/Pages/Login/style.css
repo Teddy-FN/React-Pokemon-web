@@ -1,5 +1,5 @@
 .container-login {
-  background-color: #CC0000;
+  background-color: #cc0000;
   height: 100vh;
   position: relative;
 }
@@ -22,7 +22,51 @@
   height: 100%;
 }
 
-
 .form-container {
   padding: 12px 14px;
+}
+
+.title-login {
+  font-size: 28px;
+  font-weight: 900;
+  font-family: sans-serif;
+  margin-bottom: 6px;
+}
+
+.title-describe {
+  font-size: 14px;
+  color: #555;
+  font-weight: 400;
+}
+
+.title-describe span {
+  color: #cc0000;
+}
+
+.form {
+  margin: 18px 0;
+}
+
+.form label,
+.form input {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.form input {
+  height: 40px;
+  width: 75%;
+  padding-left: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  transition: width 0.5s ease-in-out;
+}
+
+.form input:focus {
+  background-color: #f1f1f1;
+  color: #000;
+  width: 100%;
+  outline: red;
+  transition: width 0.5s ease-in-out;
 }

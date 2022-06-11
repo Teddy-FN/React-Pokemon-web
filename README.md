@@ -26,6 +26,9 @@ yarn start
 ## Libraries Used in This Project
 
 - [react-icons](https://github.com/react-icons/react-icons/)
+- [dotEnv](https://github.com/motdotla/dotenv)
+- [redux](https://github.com/reduxjs/redux)
+- [redux-thunk](https://github.com/reduxjs/redux-thunk)
 
 ## Code Structure
 
