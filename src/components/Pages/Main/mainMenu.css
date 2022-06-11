@@ -1,39 +1,31 @@
 .layout {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-columns: 5rem 1fr;
+  grid-template-rows: 5rem 1fr;
   height: 100vh;
-}
-
-.container {
-  width: 98%;
-  margin: 0.625em auto;
-  background-color: red;
 }
 
 .items a {
   display: flex;
   align-items: center;
-  gap: 0.625em;
+  gap: 0.625rem;
+  padding-right: 1.25rem;
+}
+
+.items a:last-child {
+  padding-right: 0;
 }
 
 .items a:link,
 .items a:visited {
   color: #484848;
-  font-size: 0.9em;
-  padding: 0.313em 1.25em;
+  font-size: 1.2rem;
 }
 
 .items a:hover,
 .items a:active {
-  border-radius: 6%;
-  background-color: #fbd743;
-  color: #fff;
-  transition: background-color 0.5s ease-in-out;
-}
-
-.items .login:hover {
-  background-color: red;
+  color: #cc0000;
+  transition: color 0.5s ease-in-out;
 }
 
 .inputSearch {
@@ -44,19 +36,12 @@
 
 .input {
   width: 100%;
-  padding: 0.625em 1.25em;
+  padding: 0.625rem 1.25rem;
   color: #484848;
   font-size: 0.875em;
-  letter-spacing: 0.125em;
-  border-radius: 1.25em;
+  letter-spacing: 0.125rem;
+  border-radius: 1.25rem;
   border: none;
-}
-
-.input:focus,
-.input:hover {
-  outline: none !important;
-  border-color: #fbd743;
-  /* box-shadow: 0 0 10px #fbd743; */
 }
 
 .iconsSeacrh {
@@ -64,26 +49,25 @@
   top: 50%;
   left: 95%;
   transform: translate(-50%, -50%);
-  font-size: 1.5em;
+  font-size: 1.5rem;
   z-index: 2;
 }
 
 .user-features {
-  font-size: 1.125em;
+  font-size: 1.125rem;
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  max-width: 70%;
 }
 
 .main-features {
-  height: 70%;
+  height: 50%;
+  max-height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.875em;
   justify-content: center;
-  padding: 1.25em 0 3.125em 0;
-  padding: 0.625em;
   gap: 5%;
 }
 
@@ -92,14 +76,12 @@
 }
 
 .img-logo {
-  height: auto;
+  padding: 0.625rem;
   width: 100%;
-  height: auto;
-  display: inline-block;
 }
 
 .main-icons {
-  font-size: 1.75em;
+  font-size: 1.75rem;
   color: #484848;
 }
 
@@ -109,18 +91,5 @@
 
 .two-cols {
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 0.625em;
-}
-
-.img-header {
-  padding: 1.875em;
-  background-color: green;
-  height: 50%;
-}
-
-.main-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  resize: horizontal;
+  column-gap: 0.625rem;
 }
