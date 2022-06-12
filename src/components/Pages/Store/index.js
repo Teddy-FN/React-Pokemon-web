@@ -1,38 +1,43 @@
 import React from "react";
-import Container from "../../UI/Container";
-import { DATA_STORE } from "../../../DUMMY_STORE";
-import { priceFormat } from "../../../utils/priceFormat";
+import { Icons, Images } from "../../../assets";
+import Banner from "../../UI/Banner";
 import "./style.css";
-import { Icons } from "../../../assets";
 
 const Store = (props) => {
-  console.log(DATA_STORE);
-  const datasItems = (items) => {
-    console.log("INI ITEMS BRAY", items);
-  };
   return (
-    <div>
-      <Container>
-        <div className="grid-four-cols">
-          {DATA_STORE.map((items) => (
-            <div className="card">
-              <img src={items.img} alt="product" className="img-products" />
-              <div className="product-details">
-                <p className="product-name">{items.productName}</p>
-                <div className="price-wrapper">
-                  <p className="product-price">
-                    Rp. {priceFormat(items.price)}
-                  </p>
-                  <Icons.RiHeartLine
-                    className="icons-wishlist"
-                    onClick={() => datasItems(items)}
-                  />
-                </div>
+    <div className="container">
+      <Banner
+        images={Images.PokemonPage}
+        imagesRating={Images.Rating}
+        titleBanner="Pokemon Legends Arceus"
+        descriptionBanner="Survey, catch, and research wild Pokémon in a long-gone era of
+        Sinnoh to complete the region’s first Pokédex."
+      />
+      <div className="container-store">
+        <h3 className="featured">Featured</h3>
+        <div className="featured-items">
+          <ul className="grid three-cols">
+            <li className="list-featured">
+              <div className="card-featured">
+                <h3>Games</h3>
+                <Icons.RiGamepadLine className="featured-icon" />
               </div>
-            </div>
-          ))}
+            </li>
+            <li className="list-featured">
+              <div className="card-featured">
+                <h3>Merchandise</h3>
+                <Icons.RiTShirtLine className="featured-icon" />
+              </div>
+            </li>
+            <li className="list-featured">
+              <div className="card-featured">
+                <h3>Sales</h3>
+                <Icons.RiPriceTag3Line className="featured-icon" />
+              </div>
+            </li>
+          </ul>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

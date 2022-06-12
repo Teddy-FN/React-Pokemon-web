@@ -1,18 +1,21 @@
 import React from "react";
 // PAGES
 import "./components/Pages/Main/mainMenu.css";
-import Store from "./components/Pages/Store";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Login from "./components/Pages/Login";
 import Home from "./components/Pages/Home";
+import Store from "./components/Pages/Store";
+import MainMenu from "./components/Pages/Main/MainMenu";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} exact />
         <Route path="/login" element={<Login />} exact />
-        <Route path="/store" element={<Store />} exact />
+        <Route path="/" element={<Home />} exact>
+          <Route path="/" element={<MainMenu />} />
+          <Route path="/store" element={<Store />} />
+        </Route>
       </Routes>
     </Router>
   );

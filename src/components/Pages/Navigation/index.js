@@ -21,9 +21,9 @@ const Navigation = () => {
           </a>
         </li>
         <li className="main-items">
-          <a href="#">
+          <Link to="/event">
             <Icons.RiCalendarEventLine className="main-icons" />
-          </a>
+          </Link>
         </li>
         <li className="main-items">
           <Link to="/store">

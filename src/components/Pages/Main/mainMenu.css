@@ -93,3 +93,8 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 0.625rem;
 }
+
+.three-cols {
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+}
