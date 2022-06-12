@@ -10,18 +10,18 @@ const Menu = (props) => {
         <Icons.RiSearchEyeLine className="iconsSeacrh" />
       </div>
       <div className="items user-features">
-        <a href="#" className="cart">
+        <Link to="/wish-list">
           <Icons.RiHeartLine />
           Wish List
-        </a>
-        <a href="#" className="cart">
+        </Link>
+        <Link to="/support-us">
           <Icons.RiQuestionnaireLine />
           Support
-        </a>
-        <a href="#" className="cart">
-          <Icons.RiShoppingCart2Fill />
+        </Link>
+        <Link to="/cart">
+          <Icons.RiShoppingCart2Line />
           Cart
-        </a>
+        </Link>
         <a href="#" className="notifcation">
           <Icons.RiNotification3Line />
         </a>

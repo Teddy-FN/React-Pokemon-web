@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Images } from "../../../assets";
+import { Icons, Images } from "../../../assets";
+import { Link } from "react-router-dom";
 import "./style.css";
+
 const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -63,29 +65,53 @@ const Login = () => {
             Allready have an Account ? <span>Login</span>
           </p>
           <form onSubmit={onSubmitUser} className="form">
-            <label>UserName:</label>
+            <label className="label">UserName:</label>
             {error.userName ? <p>ERROR BRAY</p> : null}
             <input
               type="text"
               placeholder="Enter Username"
               onChange={onChangeUserName}
               value={userName}
+              className="input"
             />
-            <label>Password:</label>
+            <label className="label">Password:</label>
             <input
               type="password"
               placeholder="Enter Password"
               onChange={onChangePassword}
               value={password}
+              className="input"
             />
-            <button type="submit">Submit</button>
+            <div className="checkbox-wrapper">
+              <div className="checkbox-box">
+                <input type="checkbox" className="checkBox" />
+                <label>Remember Me</label>
+              </div>
+              <p>Forget Password</p>
+            </div>
+            <Link to="/">
+              <button type="submit" className="btn btn--submit">
+                Submit
+              </button>
+            </Link>
           </form>
-          <p>
-            <span></span>Or<span></span>
-          </p>
-          <button>Login With Google</button>
-          <button>Login With Facebook</button>
-          <button>Login With Twitter</button>
+          <div className="or-wrapper">
+            <span>&nbsp;</span>
+            <p>Or</p>
+            <span>&nbsp;</span>
+          </div>
+          <button className="btn btn--google">
+            <Icons.RiGoogleFill />
+            Login With Google
+          </button>
+          <button className="btn btn--facebook">
+            <Icons.RiFacebookFill />
+            Login With Facebook
+          </button>
+          <button className="btn btn--twitter">
+            <Icons.RiTwitterFill />
+            Login With Twitter
+          </button>
         </div>
       </div>
     </div>
