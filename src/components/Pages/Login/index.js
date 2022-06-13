@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icons, Images } from "../../../assets";
 import { Link } from "react-router-dom";
+import Card from "../../UI/Card";
 import "./style.css";
 
 const Login = () => {
@@ -56,9 +57,8 @@ const Login = () => {
 
   return (
     <div className="container-login">
-      <div className="card-login">
+      <Card className="card-login">
         <img src={Images.pickachu} alt="pickahu" className="img-login" />
-
         <div className="form-container">
           <h1 className="title-login">Gets Started</h1>
           <p className="title-describe">
@@ -113,7 +113,7 @@ const Login = () => {
             Login With Twitter
           </button>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

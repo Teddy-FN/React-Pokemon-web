@@ -1,0 +1,26 @@
+.featured-items {
+  margin-top: 28px;
+}
+
+.list-featured {
+  cursor: pointer;
+}
+
+.card-featured {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 200px;
+  color: #b70000;
+}
+
+.card-featured h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.card-featured .featured-icon {
+  font-size: 100px;
+}

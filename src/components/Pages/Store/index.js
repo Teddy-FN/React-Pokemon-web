@@ -2,10 +2,29 @@ import React from "react";
 import { Icons, Images } from "../../../assets";
 import Banner from "../../UI/Banner";
 import "./style.css";
+import Featured from "../../UI/Featured";
 
 const Store = (props) => {
+  const datas = [
+    {
+      id: 1,
+      title: "Games",
+      icons: Icons.RiGamepadLine,
+    },
+    {
+      id: 2,
+      title: "Merchandise",
+      icons: Icons.RiTShirtLine,
+    },
+    {
+      id: 3,
+      title: "Sales",
+      icons: Icons.RiPriceTag3Line,
+    },
+  ];
+
   return (
-    <div className="container">
+    <section className="store">
       <Banner
         images={Images.PokemonPage}
         imagesRating={Images.Rating}
@@ -15,30 +34,9 @@ const Store = (props) => {
       />
       <div className="container-store">
         <h3 className="featured">Featured</h3>
-        <div className="featured-items">
-          <ul className="grid three-cols">
-            <li className="list-featured">
-              <div className="card-featured">
-                <h3>Games</h3>
-                <Icons.RiGamepadLine className="featured-icon" />
-              </div>
-            </li>
-            <li className="list-featured">
-              <div className="card-featured">
-                <h3>Merchandise</h3>
-                <Icons.RiTShirtLine className="featured-icon" />
-              </div>
-            </li>
-            <li className="list-featured">
-              <div className="card-featured">
-                <h3>Sales</h3>
-                <Icons.RiPriceTag3Line className="featured-icon" />
-              </div>
-            </li>
-          </ul>
-        </div>
+        <Featured data={datas} />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,6 +7,7 @@ import { actions } from "../../../actions";
 import MainMenu from "../Main/MainMenu";
 import { Routes, Route } from "react-router-dom";
 import Store from "../Store";
+import BottomMenu from "../BottomMenu";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,13 @@ const Home = () => {
     <div className="layout">
       <Navigation />
       <Menu />
-      <Routes>
-        <Route path="/" element={<MainMenu />} />
-        <Route path="/store" element={<Store />} />
-      </Routes>
+      <BottomMenu />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<MainMenu />} />
+          <Route path="/store" element={<Store />} />
+        </Routes>
+      </div>
     </div>
   );
 };
