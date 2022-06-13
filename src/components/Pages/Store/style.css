@@ -1,6 +1,9 @@
 /* *********************** */
 /* Store */
 /* *********************** */
+.store {
+  height: 100%;
+}
 .container-store {
   padding: 70px 20px;
   background-color: #f0f0f0;
@@ -25,31 +28,3 @@
 }
 
 /* FEATURED ITEMS */
-.featured-items {
-  margin-top: 28px;
-}
-
-.list-featured {
-  cursor: pointer;
-}
-
-.card-featured {
-  background-color: #fff;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 200px;
-  color: #b70000;
-  box-shadow: 3px 0px 10px rgb(0, 0, 0, 0.4);
-}
-
-.card-featured h3 {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
-
-.card-featured .featured-icon {
-  font-size: 100px;
-}

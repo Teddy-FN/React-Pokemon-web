@@ -24,13 +24,12 @@ a {
 }
 
 menu {
-  background-color: #f0f0f0;
+  background-color: #fff;
   grid-column: 2 / -1;
   height: 100%;
   padding: 0 0.625rem 0 1.25rem;
   font-weight: 700;
   letter-spacing: 0.075rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,11 +43,39 @@ aside {
 nav {
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
+  background-color: #fff;
   grid-row: 1 / -1;
+  grid-column: 1 / 2;
 }
 
 .container {
   border-top: 4px solid #e95754;
   border-left: 4px solid #e95754;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-template-rows: 5rem 1fr;
+  height: 100vh;
+}
+
+@media screen and (max-width: 720px) {
+  body,
+  html {
+    position: relative;
+    height: 100%;
+  }
+  nav {
+    display: none;
+  }
+
+  menu {
+    display: none;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
