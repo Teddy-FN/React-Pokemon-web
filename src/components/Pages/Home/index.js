@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navigation from "../Navigation";
 import Menu from "../Menu";
-import { useSelector, useDispatch } from "react-redux";
-import { actions } from "../../../actions";
 
 import MainMenu from "../Main/MainMenu";
 import { Routes, Route } from "react-router-dom";
 import Store from "../Store";
 import BottomMenu from "../BottomMenu";
+import PokemonPages from "../PokemonPages";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(actions.getAllDatasPokemon);
-  }, []);
   return (
     <div className="layout">
       <Navigation />
@@ -24,6 +18,7 @@ const Home = () => {
         <Routes>
           <Route path="/" element={<MainMenu />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/pokemon" element={<PokemonPages />} />
         </Routes>
       </div>
     </div>

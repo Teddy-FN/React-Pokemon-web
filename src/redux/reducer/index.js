@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
 import { getAllDatasPokemon } from "./get_pokemon";
 
-const combinedReducers = combineReducers({
+const rootReducers = combineReducers({
   getAllDatasPokemon,
 });
 
-export const rootReducer = (state, action) => {
-  return combinedReducers(state, action);
-};
+export default rootReducers;

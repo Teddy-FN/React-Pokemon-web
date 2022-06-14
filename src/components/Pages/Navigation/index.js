@@ -16,6 +16,11 @@ const Navigation = () => {
           </Link>
         </li>
         <li className="main-items">
+          <Link to="/pokemon">
+            <Icons.RiSwordLine className="main-icons" />
+          </Link>
+        </li>
+        <li className="main-items">
           <a href="#">
             <Icons.RiPagesLine className="main-icons" />
           </a>

@@ -19,6 +19,7 @@ import { RiGoogleFill } from "react-icons/ri";
 import { RiGamepadLine } from "react-icons/ri";
 import { RiTShirtLine } from "react-icons/ri";
 import { RiPriceTag3Line } from "react-icons/ri";
+import { RiSwordLine } from "react-icons/ri";
 
 import PokemonProductOne from "./img/pokemon3ds.jpeg";
 import PokemonProductTwo from "./img/pokemonbattlerevolution.jpg";
@@ -46,6 +47,7 @@ export const Icons = {
   RiGamepadLine,
   RiTShirtLine,
   RiPriceTag3Line,
+  RiSwordLine,
 };
 
 export const Images = {
