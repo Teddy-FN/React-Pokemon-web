@@ -6,6 +6,7 @@ import Login from "./components/Pages/Login";
 import Home from "./components/Pages/Home";
 import Store from "./components/Pages/Store";
 import MainMenu from "./components/Pages/Main/MainMenu";
+import PokemonPages from "./components/Pages/PokemonPages";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} exact>
           <Route path="/" element={<MainMenu />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/pokemon" element={<PokemonPages />} />
         </Route>
       </Routes>
     </Router>
