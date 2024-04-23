@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icons, Images } from "../../../assets";
 import { Link } from "react-router-dom";
-import Card from "../../UI/Card";
+import Card from "../../ui/Card";
 import "./style.css";
 
 const Login = () => {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Icons, Images } from "../../../assets";
-import Banner from "../../UI/Banner";
+import Banner from "../../ui/Banner";
 import "./style.css";
-import Featured from "../../UI/Featured";
+import Featured from "../../ui/Featured";
 
 const Store = (props) => {
   const datas = [
