@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../../UI/Banner";
+import Banner from "../../ui/Banner";
 import { Images } from "../../../assets";
 const MainMenu = () => {
   return (
