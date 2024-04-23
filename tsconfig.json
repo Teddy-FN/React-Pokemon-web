@@ -1,8 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "jsx": "react",
+    "target": "ES6",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "baseUrl": "src",
     "paths": {
       "@/*": ["./*"]
     }
-  }
+  },
+  "include": ["src"]
 }
