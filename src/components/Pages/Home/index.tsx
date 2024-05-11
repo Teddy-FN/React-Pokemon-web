@@ -5,7 +5,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "../../ui/Resizable";
+} from "../../UI/Resizable";
 
 // import MainMenu from "../Main/MainMenu";
 // import { Routes, Route } from "react-router-dom";
