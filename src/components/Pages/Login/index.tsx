@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button/button";
 import {
   Card,
@@ -10,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../UI/Card/card";
+import { Video } from "../../../assets";
 import { Input } from "../../UI/Input/input";
 import { Label } from "../../UI/Label/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../UI/Tabs/tabs";
@@ -30,6 +30,7 @@ interface UseformRegister {
 }
 
 const Login = () => {
+  const navigate = useNavigate();
   const [login, setLogin] = useState<UseformLogin>({
     email: "",
     password: "",
@@ -43,23 +44,29 @@ const Login = () => {
   });
 
   return (
-    <div className="bg-green-200 px-4 h-dvh flex justify-center items-center md:w-full md:bg-red-200 md:px-0">
-      <Tabs defaultValue="account" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="register">Register</TabsTrigger>
-        </TabsList>
-        <TabsContent value="account">
-          <Card>
+    <div className="relative h-screen overflow-hidden flex justify-center items-center md:w-full md:px-0">
+      <Card className="z-10 h-screen md:h-fit p-4 bg-[#ff0000] rounded-md shadow-xl transition ease-in-out delay-150 duration-200 opacity-10 hover:opacity-100">
+        <Tabs defaultValue="account" className="w-full md:w-[400px]">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="account" className="text-black">
+              Account
+            </TabsTrigger>
+            <TabsTrigger value="register" className="text-black">
+              Register
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
             <CardHeader>
-              <CardTitle>Account</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-[#fff]">Account</CardTitle>
+              <CardDescription className="text-[#fff]">
                 Make changes to your account here. Click save when you're done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-[#fff]">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -77,7 +84,9 @@ const Login = () => {
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="current">Password</Label>
+                <Label htmlFor="current" className="text-[#fff]">
+                  Password
+                </Label>
                 <Input
                   id="current"
                   type="password"
@@ -95,21 +104,28 @@ const Login = () => {
                 />
               </div>
             </CardContent>
-            <CardFooter>
-              <Button>Log in</Button>
+            <CardFooter className="flex flex-col gap-4">
+              <Button onClick={() => navigate("/")} className="w-full">
+                Log in
+              </Button>
+
+              {/* Login Google */}
+              <Button className="w-full">Log With Google</Button>
             </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="register">
-          <Card>
+          </TabsContent>
+          <TabsContent value="register">
             <CardHeader>
-              <CardTitle>Register</CardTitle>
-              <CardDescription>Form new user please register.</CardDescription>
+              <CardTitle className="text-[#fff]">Register</CardTitle>
+              <CardDescription className="text-[#fff]">
+                Form new user please register.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="flex-col flex gap-4 md:flex-row md:justify-center md:items-center ">
                 <div className="space-y-1">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName" className="text-[#fff]">
+                    First Name
+                  </Label>
                   <Input
                     id="firstName"
                     type="text"
@@ -125,7 +141,9 @@ const Login = () => {
                   />
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName" className="text-[#fff]">
+                    Last Name
+                  </Label>
                   <Input
                     id="lastName"
                     type="text"
@@ -142,7 +160,9 @@ const Login = () => {
                 </div>
               </div>
               <div className="space-y-1">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-[#fff]">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -158,7 +178,9 @@ const Login = () => {
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-[#fff]">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
@@ -174,12 +196,24 @@ const Login = () => {
                 />
               </div>
             </CardContent>
-            <CardFooter>
-              <Button>Sign Up</Button>
+            <CardFooter className="flex flex-col gap-4">
+              <Button className="w-full">Sign Up</Button>
+
+              {/* SignUp Google */}
+              <Button className="w-full">Signup With Google</Button>
             </CardFooter>
-          </Card>
-        </TabsContent>
-      </Tabs>
+          </TabsContent>
+        </Tabs>
+      </Card>
+
+      <video
+        className="w-full h-full absolute object-cover opacity-70"
+        autoPlay
+        muted
+        loop
+      >
+        <source src={Video.VideoBackground} type="video/mp4" />
+      </video>
     </div>
   );
 };
