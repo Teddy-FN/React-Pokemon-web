@@ -44,8 +44,8 @@ const Login = () => {
   });
 
   return (
-    <div className="relative h-screen overflow-hidden flex justify-center items-center md:w-full md:px-0">
-      <Card className="z-10 h-screen md:h-fit p-4 bg-[#ff0000] rounded-md shadow-xl transition ease-in-out delay-150 duration-200 opacity-10 hover:opacity-100">
+    <div className="relative h-screen overflow-hidden flex md:justify-center items-center md:px-0">
+      <Card className="z-10 h-screen w-full opacity-100 md:w-fit md:h-fit p-4 bg-[#ff0000] rounded-md shadow-xl transition ease-in-out delay-150 duration-200 md:opacity-10 hover:opacity-100 ">
         <Tabs defaultValue="account" className="w-full md:w-[400px]">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account" className="text-black">
@@ -118,6 +118,7 @@ const Login = () => {
               <CardTitle className="text-[#fff]">Register</CardTitle>
               <CardDescription className="text-[#fff]">
                 Form new user please register.
+                {/* Make changes to your account here. Click save when you're done. */}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
