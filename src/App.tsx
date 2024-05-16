@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 // PAGES
-import "./components/Pages/Main/mainMenu.css";
+// import "./components/Pages/Main/mainMenu.css";
 import Login from "./components/Pages/Login";
 import Home from "./components/Pages/Home";
 // import Store from "@/components/Pages/Store";
@@ -10,7 +10,7 @@ import Home from "./components/Pages/Home";
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -21,7 +21,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 
