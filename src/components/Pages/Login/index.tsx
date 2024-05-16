@@ -14,6 +14,9 @@ import { Input } from "../../UI/Input/input";
 import { Label } from "../../UI/Label/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../UI/Tabs/tabs";
 
+// Images
+const imgGoogle = require("../../../assets/img/google.png");
+const imgFacebook = require("../../../assets/img/facebook.png");
 import "./style.css";
 
 // Form UseState Login
@@ -110,7 +113,16 @@ const Login = () => {
               </Button>
 
               {/* Login Google */}
-              <Button className="w-full">Log With Google</Button>
+              <Button className="w-full relative gap-2 bg-white">
+                <img src={imgGoogle} className="img-social-media" />
+                <p className="text-black">Log In With Google</p>
+              </Button>
+
+              {/* Login With Facebook */}
+              <Button className="w-full relative gap-2 bg-white">
+                <img src={imgFacebook} className="img-social-media" />
+                <p className="text-black">Log In With Facebook</p>
+              </Button>
             </CardFooter>
           </TabsContent>
           <TabsContent value="register">
@@ -118,7 +130,6 @@ const Login = () => {
               <CardTitle className="text-[#fff]">Register</CardTitle>
               <CardDescription className="text-[#fff]">
                 Form new user please register.
-                {/* Make changes to your account here. Click save when you're done. */}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -201,7 +212,16 @@ const Login = () => {
               <Button className="w-full">Sign Up</Button>
 
               {/* SignUp Google */}
-              <Button className="w-full">Signup With Google</Button>
+              <Button className="w-full relative gap-2 bg-white">
+                <img src={imgGoogle} className="img-social-media" />
+                <p className="text-black">Sign Up With Google</p>
+              </Button>
+
+              {/* Sign Up Facebook */}
+              <Button className="w-full relative gap-2 bg-white">
+                <img src={imgFacebook} className="img-social-media" />
+                <p className="text-black">Sign Up With Facebook</p>
+              </Button>
             </CardFooter>
           </TabsContent>
         </Tabs>

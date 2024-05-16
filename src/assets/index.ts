@@ -31,8 +31,10 @@ import pokemonSword from "./img/pokemonShiledBanner.jpg";
 // import Rating from "./img/rating.png";
 
 // Video
-
 import VideoBackground from "./video/video.mp4";
+
+// Social Media Image
+import GoogleImage from "./img/google.png";
 
 // export const Icons = {
 //   RiHome3Line,
@@ -74,4 +76,8 @@ export const Images = {
 
 export const Video = {
   VideoBackground,
+};
+
+export const SocialMediaImage = {
+  GoogleImage,
 };
