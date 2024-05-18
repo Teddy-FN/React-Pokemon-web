@@ -6,6 +6,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../UI/Resizable";
+// import useStoreUser from "../../../state/authUser";
 
 // import MainMenu from "../Main/MainMenu";
 // import { Routes, Route } from "react-router-dom";
@@ -43,12 +44,11 @@ className="max-w-md rounded-lg border"
 }
 
 const Home = () => {
+  // const user = useStoreUser();
+
   return (
     <div className="w-full h-screen">
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="max-w-full"
-      >
+      <ResizablePanelGroup direction="horizontal" className="max-w-full">
         <ResizablePanel defaultSize={4}>
           <div className="flex h-[200px] items-center justify-center p-6">
             <span className="font-semibold">One</span>
