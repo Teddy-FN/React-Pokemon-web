@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button/button";
 import {
@@ -15,36 +15,15 @@ import { Label } from "../../UI/Label/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../UI/Tabs/tabs";
 
 // Images
-const imgGoogle = require("../../../assets/img/google.png");
-const imgFacebook = require("../../../assets/img/facebook.png");
+import imgGoogle from "../../../assets/img/google.png";
+import imgFacebook from "../../../assets/img/facebook.png";
 import "./style.css";
 
-// Form UseState Login
-interface UseformLogin {
-  email: string;
-  password: string;
-}
-
-interface UseformRegister {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+import useStoreUser from "../../../state/authUser";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState<UseformLogin>({
-    email: "",
-    password: "",
-  });
-
-  const [register, setRegister] = useState<UseformRegister>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const user = useStoreUser((state: any) => state);
 
   return (
     <div className="relative h-screen overflow-hidden flex md:justify-center items-center md:px-0">
@@ -75,15 +54,8 @@ const Login = () => {
                   type="email"
                   defaultValue=""
                   placeholder="Enter Your Email"
-                  value={login.email}
-                  onChange={(e) =>
-                    setLogin((prevState) => {
-                      return {
-                        ...prevState,
-                        email: e.target.value,
-                      };
-                    })
-                  }
+                  value={user?.email}
+                  onChange={(e) => user?.onchangeInput(e.target.value, "email")}
                 />
               </div>
               <div className="space-y-1">
@@ -95,14 +67,9 @@ const Login = () => {
                   type="password"
                   defaultValue=""
                   placeholder="Enter Your Password"
-                  value={login.password}
+                  value={user.password}
                   onChange={(e) =>
-                    setLogin((prevState) => {
-                      return {
-                        ...prevState,
-                        password: e.target.value,
-                      };
-                    })
+                    user?.onchangeInput(e.target.value, "password")
                   }
                 />
               </div>
@@ -143,12 +110,9 @@ const Login = () => {
                     type="text"
                     placeholder="Enter Your First Name"
                     defaultValue=""
-                    value={register.firstName}
+                    value={user.firstName}
                     onChange={(e) =>
-                      setRegister((prevState) => ({
-                        ...prevState,
-                        firstName: e.target.value,
-                      }))
+                      user?.onchangeInput(e.target.value, "firstName")
                     }
                   />
                 </div>
@@ -161,12 +125,9 @@ const Login = () => {
                     type="text"
                     placeholder="Enter Your First Name"
                     defaultValue=""
-                    value={register.lastName}
+                    value={user.lastName}
                     onChange={(e) =>
-                      setRegister((prevState) => ({
-                        ...prevState,
-                        lastName: e.target.value,
-                      }))
+                      user?.onchangeInput(e.target.value, "lastName")
                     }
                   />
                 </div>
@@ -180,13 +141,8 @@ const Login = () => {
                   type="email"
                   placeholder="Enter Your Email"
                   defaultValue=""
-                  value={register.email}
-                  onChange={(e) =>
-                    setRegister((prevState) => ({
-                      ...prevState,
-                      email: e.target.value,
-                    }))
-                  }
+                  value={user.email}
+                  onChange={(e) => user?.onchangeInput(e.target.value, "email")}
                 />
               </div>
               <div className="space-y-1">
@@ -198,12 +154,9 @@ const Login = () => {
                   type="password"
                   defaultValue=""
                   placeholder="Enter Your Password"
-                  value={register.password}
+                  value={user.password}
                   onChange={(e) =>
-                    setRegister((prevState) => ({
-                      ...prevState,
-                      password: e.target.value,
-                    }))
+                    user?.onchangeInput(e.target.value, "password")
                   }
                 />
               </div>
