@@ -5,7 +5,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "../../UI/Resizable";
+} from "components/UI/Resizable";
 // import useStoreUser from "../../../state/authUser";
 
 // import MainMenu from "../Main/MainMenu";

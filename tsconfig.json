@@ -8,10 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "src"
   },
   "include": ["src"]
 }
