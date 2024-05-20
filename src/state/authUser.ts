@@ -8,7 +8,7 @@ type user = {
   email: string;
   password: string;
   onchangeInput: (val: any, type: any) => void;
-  // changeTab: () => void;
+  changeTab: () => void;
 };
 
 const useStoreUser = create<user>()(
@@ -36,10 +36,10 @@ const useStoreUser = create<user>()(
             set({ lastName: props });
           }
         },
-        // changeTab: () => {
-        //   set({ email: "", firstName: "", lastName: "", password: "" });
-        //   localStorage.removeItem("user-storage");
-        // },
+        changeTab: () => {
+          set({ email: "", firstName: "", lastName: "", password: "" });
+          localStorage.removeItem("user-storage");
+        },
       }),
       {
         name: "user-storage",

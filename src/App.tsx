@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 // PAGES
 // import "./components/Pages/Main/mainMenu.css";
-import Login from "./components/Pages/Login";
+import Login from "./components/Pages/Auth";
 import Home from "./components/Pages/Home";
 // import Store from "@/components/Pages/Store";
 // import MainMenu from "@/components/Pages/Main";
