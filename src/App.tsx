@@ -1,4 +1,5 @@
 import React from "react";
+import "i18n/config";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 // PAGES
 // import "./components/Pages/Main/mainMenu.css";

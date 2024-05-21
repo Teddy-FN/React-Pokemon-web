@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,8 +20,18 @@ import { Input } from "components/UI/Input/input";
 import imgGoogle from "assets/img/google.png";
 import imgFacebook from "assets/img/facebook.png";
 import useStoreUser from "state/authUser";
+import { useTranslation } from "react-i18next";
 
 const FormLogin = () => {
+  const { t } = useTranslation();
+
+  const translation = useMemo(
+    () => ({
+      email: t("translation:email"),
+    }),
+    [t],
+  );
+
   // const navigate = useNavigate();
   const user = useStoreUser((state: any) => state);
 
@@ -51,7 +61,9 @@ const FormLogin = () => {
             name="email"
             render={() => (
               <FormItem>
-                <FormLabel className="text-[#fff]">Email</FormLabel>
+                <FormLabel className="text-[#fff]">
+                  {translation.email}
+                </FormLabel>
                 <FormControl>
                   <Input
                     id="email"
