@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 // Global Components
 import {
@@ -25,6 +26,16 @@ import useStoreUser from "state/authUser";
 
 const Login = () => {
   const user = useStoreUser((state: any) => state);
+  const { t } = useTranslation();
+  const translation = useMemo(
+    () => ({
+      signUp: t("translation:signUp"),
+      signUpDesc: t("translation:signUpDesc"),
+      login: t("translation:login"),
+      loginDesc: t("translation:loginDesc"),
+    }),
+    [t],
+  );
 
   return (
     <div className="relative h-screen overflow-hidden flex md:justify-center items-center md:px-0">
@@ -36,17 +47,17 @@ const Login = () => {
         >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account" className="text-black">
-              Account
+              {translation.login}
             </TabsTrigger>
             <TabsTrigger value="register" className="text-black">
-              Register
+              {translation.signUp}
             </TabsTrigger>
           </TabsList>
           <TabsContent value="account">
             <CardHeader>
-              <CardTitle className="text-[#fff]">Account</CardTitle>
+              <CardTitle className="text-[#fff]">{translation.login}</CardTitle>
               <CardDescription className="text-[#fff]">
-                Make changes to your account here. Click save when you're done.
+                {translation.loginDesc}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -55,9 +66,11 @@ const Login = () => {
           </TabsContent>
           <TabsContent value="register">
             <CardHeader>
-              <CardTitle className="text-[#fff]">Register</CardTitle>
+              <CardTitle className="text-[#fff]">
+                {translation.signUp}
+              </CardTitle>
               <CardDescription className="text-[#fff]">
-                Form new user please register.
+                {translation.signUpDesc}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">

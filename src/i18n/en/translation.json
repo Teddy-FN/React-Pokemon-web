@@ -1,4 +1,18 @@
 {
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "placeholderEmail": "Enter Your Email",
+  "placeholderFirstName": "Enter Your First Name",
+  "placeholderLastName": "Enter Your Last Name",
+  "placeholderPassword": "Enter Your Password",
+  "login": "Log In",
+  "signUp": "Sign Up",
+  "signUpDesc": "Sign Up new user for to best trainer Pokemon in the world",
+  "loginDesc": "If already have a account please fill this form.",
+  "logInWithGoogle": "Log In With Google",
+  "signUpWithGoogle": "Sign Up With Google",
+  "logInWithFacebook": "Log In With Facebook",
+  "signUpWithFacebook": "Sign Up With Facebook"
 }

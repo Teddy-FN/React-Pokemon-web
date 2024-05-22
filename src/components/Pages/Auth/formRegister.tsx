@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 // import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,6 +23,23 @@ import imgFacebook from "assets/img/facebook.png";
 import useStoreUser from "state/authUser";
 
 const FormRegister = () => {
+  const { t } = useTranslation();
+  const translation = useMemo(
+    () => ({
+      email: t("translation:email"),
+      firstName: t("translation:firstName"),
+      lastName: t("translation:lastName"),
+      placeholderEmail: t("translation:placeholderEmail"),
+      placeholderLastName: t("translation:placeholderLastName"),
+      placeholderFirstName: t("translation:placeholderFirstName"),
+      password: t("translation:password"),
+      placeholderPassword: t("translation:placeholderPassword"),
+      signUp: t("translation:signUp"),
+      signUpWithGoogle: t("translation:signUpWithGoogle"),
+      signUpWithFacebook: t("translation:signUpWithFacebook"),
+    }),
+    [t],
+  );
   // const navigate = useNavigate();
   const user = useStoreUser((state: any) => state);
 
@@ -56,13 +74,15 @@ const FormRegister = () => {
               name="firstName"
               render={() => (
                 <FormItem>
-                  <FormLabel className="text-[#fff]">FirstName</FormLabel>
+                  <FormLabel className="text-[#fff]">
+                    {translation.firstName}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       id="firstName"
                       type="firstName"
                       defaultValue=""
-                      placeholder="Enter Your firstName"
+                      placeholder={translation.placeholderFirstName}
                       value={user?.firstName}
                       onChange={(e) =>
                         user?.onchangeInput(e.target.value, "firstName")
@@ -80,13 +100,15 @@ const FormRegister = () => {
               name="lastName"
               render={() => (
                 <FormItem>
-                  <FormLabel className="text-[#fff]">Last Name</FormLabel>
+                  <FormLabel className="text-[#fff]">
+                    {translation.lastName}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       id="lastName"
                       type="lastName"
                       defaultValue=""
-                      placeholder="Enter Your Last Name"
+                      placeholder={translation.placeholderLastName}
                       value={user?.lastName}
                       onChange={(e) =>
                         user?.onchangeInput(e.target.value, "lastName")
@@ -105,13 +127,15 @@ const FormRegister = () => {
             name="email"
             render={() => (
               <FormItem className="mt-4">
-                <FormLabel className="text-[#fff]">Email</FormLabel>
+                <FormLabel className="text-[#fff]">
+                  {translation.email}
+                </FormLabel>
                 <FormControl>
                   <Input
                     id="email"
                     type="email"
                     defaultValue=""
-                    placeholder="Enter Your Email"
+                    placeholder={translation.placeholderEmail}
                     value={user?.email}
                     onChange={(e) =>
                       user?.onchangeInput(e.target.value, "email")
@@ -129,13 +153,15 @@ const FormRegister = () => {
             name="password"
             render={() => (
               <FormItem className="mt-4">
-                <FormLabel className="text-[#fff]">Password</FormLabel>
+                <FormLabel className="text-[#fff]">
+                  {translation.password}
+                </FormLabel>
                 <FormControl>
                   <Input
                     id="password"
                     type="password"
                     defaultValue=""
-                    placeholder="Enter Your password"
+                    placeholder={translation.placeholderEmail}
                     value={user?.password}
                     onChange={(e) =>
                       user?.onchangeInput(e.target.value, "password")
@@ -149,20 +175,24 @@ const FormRegister = () => {
         </div>
 
         <div className="flex flex-col gap-4 mt-4">
-          <Button type="submit" className="w-full">
-            Sign Up
+          <Button
+            type="submit"
+            className="w-full bg-[#fbd743] text-white"
+            variant="outline"
+          >
+            {translation.signUp}
           </Button>
 
           {/* Login Google */}
-          <Button className="w-full relative gap-2 bg-white">
+          <Button className="w-full relative gap-2 bg-white" variant="outline">
             <img src={imgGoogle} className="img-social-media" />
-            <p className="text-black">Sign Up With Google</p>
+            <p className="text-black">{translation.signUpWithGoogle}</p>
           </Button>
 
           {/* Login With Facebook */}
-          <Button className="w-full relative gap-2 bg-white">
+          <Button className="w-full relative gap-2 bg-white" variant="outline">
             <img src={imgFacebook} className="img-social-media" />
-            <p className="text-black">Sign Up With Facebook</p>
+            <p className="text-black">{translation.signUpWithFacebook}</p>
           </Button>
         </div>
       </form>

@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 // import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,14 +21,18 @@ import { Input } from "components/UI/Input/input";
 import imgGoogle from "assets/img/google.png";
 import imgFacebook from "assets/img/facebook.png";
 import useStoreUser from "state/authUser";
-import { useTranslation } from "react-i18next";
 
 const FormLogin = () => {
   const { t } = useTranslation();
-
   const translation = useMemo(
     () => ({
       email: t("translation:email"),
+      placeholderEmail: t("translation:placeholderEmail"),
+      password: t("translation:password"),
+      placeholderPassword: t("translation:placeholderPassword"),
+      login: t("translation:login"),
+      logInWithGoogle: t("translation:logInWithGoogle"),
+      logInWithFacebook: t("translation:logInWithFacebook"),
     }),
     [t],
   );
@@ -69,7 +74,7 @@ const FormLogin = () => {
                     id="email"
                     type="email"
                     defaultValue=""
-                    placeholder="Enter Your Email"
+                    placeholder={translation.placeholderEmail}
                     value={user?.email}
                     onChange={(e) =>
                       user?.onchangeInput(e.target.value, "email")
@@ -87,13 +92,15 @@ const FormLogin = () => {
             name="password"
             render={() => (
               <FormItem className="mt-4">
-                <FormLabel className="text-[#fff]">Password</FormLabel>
+                <FormLabel className="text-[#fff]">
+                  {translation.password}
+                </FormLabel>
                 <FormControl>
                   <Input
                     id="password"
                     type="password"
                     defaultValue=""
-                    placeholder="Enter Your password"
+                    placeholder={translation.placeholderPassword}
                     value={user?.password}
                     onChange={(e) =>
                       user?.onchangeInput(e.target.value, "password")
@@ -107,20 +114,24 @@ const FormLogin = () => {
         </div>
 
         <div className="flex flex-col gap-4 mt-4">
-          <Button type="submit" className="w-full">
-            Log in
+          <Button
+            type="submit"
+            className="w-full bg-[#fbd743] text-white"
+            variant="outline"
+          >
+            {translation.login}
           </Button>
 
           {/* Login Google */}
-          <Button className="w-full relative gap-2 bg-white">
+          <Button className="w-full relative gap-2 bg-white" variant="outline">
             <img src={imgGoogle} className="img-social-media" />
-            <p className="text-black">Log In With Google</p>
+            <p className="text-black">{translation.logInWithGoogle}</p>
           </Button>
 
           {/* Login With Facebook */}
-          <Button className="w-full relative gap-2 bg-white">
+          <Button className="w-full relative gap-2 bg-white" variant="outline">
             <img src={imgFacebook} className="img-social-media" />
-            <p className="text-black">Log In With Facebook</p>
+            <p className="text-black">{translation.logInWithFacebook}</p>
           </Button>
         </div>
       </form>
