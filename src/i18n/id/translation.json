@@ -1,4 +1,18 @@
 {
   "email": "Email",
-  "password": "Kata Sandi"
+  "firstName": "Nama Depan",
+  "lastName": "Nama Belakang",
+  "password": "Kata Sandi",
+  "placeholderEmail": "Masukan Email Anda",
+  "placeholderPassword": "Masukan Password Anda",
+  "placeholderFirstName": "Masukan Nama Depan Anda",
+  "placeholderLastName": "Masukan Nama Belakang Anda",
+  "login": "Masuk",
+  "signUp": "Daftar",
+  "signUpDesc": "Daftar pengguna baru untuk menjadi trainer Pokemon Terbaik di dunia",
+  "loginDesc": "Jika sudah punya akun, silahkan di isi",
+  "logInWithGoogle": "Masuk Dengan Google",
+  "signUpWithGoogle": "Daftar Dengan Google",
+  "logInWithFacebook": "Masuk Dengan Facebook",
+  "signUpWithFacebook": "Daftar Dengan Facebook"
 }
