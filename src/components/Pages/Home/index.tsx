@@ -1,5 +1,4 @@
 import React from "react";
-// import Navigation from "@/components/Pages/Navigation";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -31,13 +30,18 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "components/UI/Select/select";
 
 import { Switch } from "components/UI/Switch/switch";
 
+// State
+import useStoreLanguage from "state/language";
+
+// Utils
+import { NATIONAL_LANGUAGE } from "utils/constant";
+
 const Home = () => {
-  // const user = useStoreUser();
+  const language = useStoreLanguage();
 
   return (
     <div className="w-full h-screen">
@@ -62,14 +66,32 @@ const Home = () => {
                 </div>
                 <div className="flex flex-auto justify-end gap-4 items-center">
                   <div className="hidden md:inline">
-                    <Select>
-                      <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Theme" />
+                    <Select onValueChange={(e) => language.onchangeValue(e)}>
+                      <SelectTrigger className="w-fit">
+                        {NATIONAL_LANGUAGE?.filter(
+                          (items) => items.value === language.value,
+                        )?.map((items) => (
+                          <img
+                            src={items.img}
+                            alt={items.name}
+                            className="max-w-6 max-h-6"
+                          />
+                        ))}
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="light">Light</SelectItem>
-                        <SelectItem value="dark">Dark</SelectItem>
-                        <SelectItem value="system">System</SelectItem>
+                      <SelectContent className="min-w-2">
+                        {NATIONAL_LANGUAGE.map((items) => (
+                          <SelectItem
+                            value={items.value}
+                            // onSelectCapture={language.value}
+                            className="w-fit flex justify-center items-center"
+                          >
+                            <img
+                              src={items.img}
+                              alt={items.name}
+                              className="max-w-6 max-h-6 text-center"
+                            />
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
