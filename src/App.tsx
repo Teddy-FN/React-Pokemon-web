@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "i18n/config";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 // PAGES
@@ -8,8 +8,21 @@ import Home from "./components/Pages/Home";
 // import Store from "@/components/Pages/Store";
 // import MainMenu from "@/components/Pages/Main";
 // import PokemonPages from "@/components/Pages/PokemonPages";
+import { useTranslation } from "react-i18next";
+// State
+import useStoreLanguage from "state/language";
 
 function App() {
+  const { i18n } = useTranslation();
+  const language = useStoreLanguage();
+
+  useEffect(() => {
+    if (language.value) {
+      console.log("HELLO", language.value);
+      i18n.changeLanguage(language.value);
+    }
+  }, [language.value]);
+
   return (
     <>
       <Router>
