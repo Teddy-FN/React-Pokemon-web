@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -14,10 +14,9 @@ module.exports = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-        'tablet': '640px',  
-        'laptop': '1024px',  
-        'desktop': '1280px',
-
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1280px",
       },
     },
     extend: {
@@ -78,4 +77,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

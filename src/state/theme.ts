@@ -14,6 +14,11 @@ const useStoreTheme = create<theme>()(
         theme: false,
         onChangeTheme: (val: any) => {
           set({ theme: val });
+          if (val) {
+            document.querySelector("html")?.classList.add("dark");
+          } else {
+            document.querySelector("html")?.classList.remove("dark");
+          }
         },
       }),
       {
