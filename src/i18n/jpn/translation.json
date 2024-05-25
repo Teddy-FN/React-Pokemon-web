@@ -1,0 +1,18 @@
+{
+  "email": "Eメール",
+  "password": "パスワード",
+  "firstName": "ファーストネーム",
+  "lastName": "苗字",
+  "placeholderEmail": "メールアドレスを入力",
+  "placeholderFirstName": "あなたの名を入力してください",
+  "placeholderLastName": "姓を入力してください",
+  "placeholderPassword": "パスワードを入力してください",
+  "login": "ログイン",
+  "signUp": "サインアップ",
+  "signUpDesc": "世界で最高のトレーナーポケモンを目指して新しいユーザーにサインアップしてください.",
+  "loginDesc": "すでにアカウントをお持ちの場合は、このフォームにご記入ください.",
+  "logInWithGoogle": "Googleでログイン",
+  "signUpWithGoogle": "Google に登録する",
+  "logInWithFacebook": "Facebookでログイン",
+  "signUpWithFacebook": "Facebookでサインアップ"
+}
