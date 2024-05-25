@@ -18,7 +18,6 @@ function App() {
 
   useEffect(() => {
     if (language.value) {
-      console.log("HELLO", language.value);
       i18n.changeLanguage(language.value);
     }
   }, [language.value]);
