@@ -8,17 +8,17 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "components/UI/Card/card";
+} from "components/UI/Atoms/Card/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "components/UI/Tabs/tabs";
+} from "components/UI/Atoms/Tabs/tabs";
 
 // Auth Form Components
-import FormLogin from "components/Pages/Auth/formLogin";
-import FormRegister from "components/Pages/Auth/formRegister";
+import FormLogin from "components/UI/Molecule/Form/formLogin";
+import FormRegister from "components/UI/Molecule/Form/formRegister";
 
 // Images / Video
 import Video from "assets/video/video.mp4";
