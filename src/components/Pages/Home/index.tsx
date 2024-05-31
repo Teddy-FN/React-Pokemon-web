@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 
 // Components
 import {
@@ -9,8 +10,18 @@ import {
 
 // Organism Component
 import Header from "components/UI/Organism/Header";
+import PokemonList from "components/UI/Organism/PokemonList";
+
+// Import Fetch
+import getPokemonList from "services/privates-routes/getPokemonList";
 
 const Home = () => {
+  const queryPokemon = useQuery({
+    queryKey: ["getPokemonList"],
+    queryFn: () => getPokemonList.getPokemonList(),
+  });
+  console.log("queryPokemon =>", queryPokemon);
+
   return (
     <div className="w-full h-screen ">
       <ResizablePanelGroup direction="horizontal" className="max-w-full">
@@ -27,9 +38,7 @@ const Home = () => {
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel defaultSize={90}>
-              <div className="flex h-full items-center justify-center p-6 -z-1">
-                <span className="font-semibold">Three</span>
-              </div>
+              <PokemonList data={queryPokemon} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>
