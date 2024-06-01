@@ -37,7 +37,13 @@ const Home = () => {
               <Header />
             </ResizablePanel>
             <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={90}>
+            <ResizablePanel
+              defaultSize={90}
+              style={{
+                overflow: "scroll",
+              }}
+              className="p-4"
+            >
               <PokemonList data={queryPokemon} />
             </ResizablePanel>
           </ResizablePanelGroup>
