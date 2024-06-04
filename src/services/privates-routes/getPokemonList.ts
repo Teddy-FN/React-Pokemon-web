@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import ENDPOINTS from "services/endpoints";
 
-const getPokemonList = async (): Promise<AxiosResponse> => {
+const getPokemonList = async (pagination: number): Promise<AxiosResponse> => {
   const { data, status } = await axios.get(
-    `${ENDPOINTS.baseUrl}/${ENDPOINTS.getPokemon}`,
+    `${ENDPOINTS.baseUrl}/${ENDPOINTS.getPokemon}?offset=${pagination}&limit=20`,
     {
       headers: {
         "Content-Type": "application/json",
