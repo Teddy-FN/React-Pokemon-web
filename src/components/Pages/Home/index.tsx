@@ -9,6 +9,7 @@ import {
 } from "components/UI/Atoms/Resizable";
 
 // Organism Component
+import SideBar from "components/UI/Organism/Sidebar";
 import Header from "components/UI/Organism/Header";
 import PokemonList from "components/UI/Organism/PokemonList";
 
@@ -30,9 +31,7 @@ const Home = () => {
     <div className="w-full h-screen ">
       <ResizablePanelGroup direction="horizontal" className="max-w-full">
         <ResizablePanel defaultSize={4} className="hidden md:inline">
-          <div className="flex h-[200px] items-center justify-center p-6">
-            <span className="font-semibold">One</span>
-          </div>
+          <SideBar />
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={50}>
