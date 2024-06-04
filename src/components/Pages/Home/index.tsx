@@ -12,15 +12,19 @@ import {
 import Header from "components/UI/Organism/Header";
 import PokemonList from "components/UI/Organism/PokemonList";
 
+// State
+import userStorePagination from "state/pagination";
+
 // Import Fetch
 import getPokemonList from "services/privates-routes/getPokemonList";
 
 const Home = () => {
+  const pagination = userStorePagination();
+
   const queryPokemon = useQuery({
-    queryKey: ["getPokemonList"],
-    queryFn: () => getPokemonList.getPokemonList(),
+    queryKey: ["getPokemonList", pagination.next],
+    queryFn: () => getPokemonList.getPokemonList(pagination.next),
   });
-  console.log("queryPokemon =>", queryPokemon);
 
   return (
     <div className="w-full h-screen ">
@@ -44,7 +48,12 @@ const Home = () => {
               }}
               className="p-4"
             >
-              <PokemonList data={queryPokemon} />
+              <PokemonList
+                data={queryPokemon}
+                nextPage={() => pagination.handleNext()}
+                prevPage={() => pagination.handlePrev()}
+                page={pagination.next}
+              />
             </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>
