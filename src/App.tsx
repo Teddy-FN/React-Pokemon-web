@@ -5,6 +5,8 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 // import "./components/Pages/Main/mainMenu.css";
 import Login from "./components/Pages/Auth";
 import Home from "./components/Pages/Home";
+import Location from "components/Pages/Location";
+import Games from "components/Pages/Games";
 // import Store from "@/components/Pages/Store";
 // import MainMenu from "@/components/Pages/Main";
 // import PokemonPages from "@/components/Pages/PokemonPages";
@@ -32,6 +34,9 @@ function App() {
             {/* <Route path="/store" element={<Store />} /> */}
             {/* <Route path="/pokemon" element={<PokemonPages />} /> */}
           </Route>
+
+          <Route path="/games" element={<Games />} />
+          <Route path="/location" element={<Location />} />
         </Routes>
       </Router>
     </>

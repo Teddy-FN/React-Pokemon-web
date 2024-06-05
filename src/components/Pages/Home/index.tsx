@@ -1,16 +1,70 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
-// Components
+export interface Artwork {
+  artist: string;
+  art: string;
+}
+
+export const works: Artwork[] = [
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Tom Byrom",
+    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+];
+
+// Atoms
 import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "components/UI/Atoms/Resizable";
+  ScrollArea,
+  ScrollBar,
+} from "components/UI/Atoms/ScrollArea/scroll-area";
 
 // Organism Component
-import SideBar from "components/UI/Organism/Sidebar";
-import Header from "components/UI/Organism/Header";
+import ContainerMenu from "components/UI/Organism/ContainerMenu";
 import PokemonList from "components/UI/Organism/PokemonList";
 
 // State
@@ -19,7 +73,9 @@ import userStorePagination from "state/pagination";
 // Import Fetch
 import getPokemonList from "services/privates-routes/getPokemonList";
 
-const Home = () => {
+const Home = (props: any) => {
+  console.log("props", props);
+
   const pagination = userStorePagination();
 
   const queryPokemon = useQuery({
@@ -28,36 +84,38 @@ const Home = () => {
   });
 
   return (
-    <div className="w-full h-screen ">
-      <ResizablePanelGroup direction="horizontal" className="max-w-full">
-        <ResizablePanel defaultSize={4} className="hidden md:inline">
-          <SideBar />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={50}>
-          <ResizablePanelGroup direction="vertical">
-            <ResizablePanel defaultSize={10}>
-              <Header />
-            </ResizablePanel>
-            <ResizableHandle withHandle />
-            <ResizablePanel
-              defaultSize={90}
-              style={{
-                overflow: "scroll",
-              }}
-              className="p-4"
-            >
-              <PokemonList
-                data={queryPokemon}
-                nextPage={() => pagination.handleNext()}
-                prevPage={() => pagination.handlePrev()}
-                page={pagination.next}
-              />
-            </ResizablePanel>
-          </ResizablePanelGroup>
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </div>
+    <ContainerMenu>
+      <ScrollArea className="w-full overflow-y-auto">
+        <div className="max-w-full flex bg-green-500 max-h-fit gap-10">
+          {works.map((artwork) => (
+            <div className="flex border border-slate-600 rounded-xl justify-between p-6 w-max">
+              <div className="flex flex-col gap-4 flex-1">
+                <p className="text-lg font-bold">Pokemon :</p>
+                <p className="text-md">{artwork.artist}</p>
+              </div>
+              <div className="flex-1">
+                <img
+                  src={artwork.art}
+                  alt={`Photo by ${artwork.artist}`}
+                  className="w-full h-full object-cover"
+                  width="100%"
+                />
+              </div>
+            </div>
+          ))}
+
+          <ScrollBar orientation="horizontal" />
+        </div>
+      </ScrollArea>
+      <div className="p-4">
+        <PokemonList
+          data={queryPokemon}
+          nextPage={() => pagination.handleNext()}
+          prevPage={() => pagination.handlePrev()}
+          page={pagination.next}
+        />
+      </div>
+    </ContainerMenu>
   );
 };
 
