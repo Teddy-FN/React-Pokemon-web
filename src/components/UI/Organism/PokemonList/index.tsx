@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Button } from "components/UI/Atoms/Button/button";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
 import { Card } from "components/UI/Atoms/Card/card";
@@ -21,6 +21,8 @@ const PokemonList = ({
   prevPage: any;
   page: number;
 }) => {
+  const [loading, setLoading] = useState(true);
+
   const RENDER_DATA = useMemo(() => {
     if (data?.isLoading) {
       return (
@@ -51,7 +53,14 @@ const PokemonList = ({
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png`}
                     alt={items.name}
+                    loading="lazy"
+                    onLoad={() => setLoading(false)}
+                    className={`${!loading ? "block" : "none"}`}
                   />
+                  {loading && (
+                    <Skeleton className={`h-[125px] w-full rounded-xl block`} />
+                  )}
+
                   <span className="font-semibold dark:text-white">
                     {items.name}
                   </span>
@@ -74,7 +83,7 @@ const PokemonList = ({
         </div>
       );
     }
-  }, [data]);
+  }, [data, loading, setLoading]);
 
   return (
     <ScrollArea className="w-full whitespace-nowrap rounded-md">
