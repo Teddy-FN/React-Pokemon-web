@@ -20,11 +20,11 @@ const SideBar = () => {
           <GiWoodCabin className="h-8 w-8" />
           <p className="font-bold text-base">Home</p>
         </Link>
-        <Link to="/" className="flex gap-4 items-center">
+        <Link to="/games" className="flex gap-4 items-center">
           <GiGamepad className="h-8 w-8" />
           <p className="font-bold text-base">Games</p>
         </Link>
-        <Link to="/" className="flex gap-4 items-center">
+        <Link to="/location" className="flex gap-4 items-center">
           <GiTrail className="h-8 w-8" />
           <p className="font-bold text-base">Locations</p>
         </Link>
