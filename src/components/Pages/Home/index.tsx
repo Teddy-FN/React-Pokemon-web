@@ -85,8 +85,8 @@ const Home = (props: any) => {
 
   return (
     <ContainerMenu>
-      <ScrollArea className="w-full overflow-y-auto">
-        <div className="max-w-full flex bg-green-500 max-h-fit gap-10">
+      <ScrollArea className="w-full overflow-y-auto p-4">
+        <div className="max-w-full flex max-h-fit gap-10">
           {works.map((artwork) => (
             <div className="flex border border-slate-600 rounded-xl justify-between p-6 w-max">
               <div className="flex flex-col gap-4 flex-1">
@@ -103,7 +103,6 @@ const Home = (props: any) => {
               </div>
             </div>
           ))}
-
           <ScrollBar orientation="horizontal" />
         </div>
       </ScrollArea>
