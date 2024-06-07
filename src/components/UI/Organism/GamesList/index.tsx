@@ -16,8 +16,8 @@ const GamesList = ({ data }: { data: any }) => {
     if (data?.isLoading) {
       return (
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {LoadingSkeleton.map(() => (
-            <Skeleton className="min-h-52 w-full rounded-xl" />
+          {LoadingSkeleton.map((_: any, index: number) => (
+            <Skeleton className="min-h-52 w-full rounded-xl" key={index} />
           ))}
         </div>
       );
@@ -29,9 +29,12 @@ const GamesList = ({ data }: { data: any }) => {
       return (
         <div className="flex flex-col gap-8">
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-            {results.map((items: any) => {
+            {results.map((items: any, index: number) => {
               return (
-                <Card className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52">
+                <Card
+                  className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52"
+                  key={index}
+                >
                   <span className="font-semibold dark:text-white">
                     {items.name}
                   </span>

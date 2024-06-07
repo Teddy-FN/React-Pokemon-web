@@ -62,8 +62,11 @@ const Header = () => {
                     <SelectTrigger className="w-full border-hidden">
                       {NATIONAL_LANGUAGE?.filter(
                         (items) => items.value === language.value,
-                      )?.map((items) => (
-                        <div className="w-full flex gap-4 items-center">
+                      )?.map((items: any, index: number) => (
+                        <div
+                          className="w-full flex gap-4 items-center"
+                          key={index}
+                        >
                           <img
                             src={items.img}
                             alt={items.name}
@@ -83,10 +86,11 @@ const Header = () => {
                     >
                       <SelectGroup>
                         <SelectLabel>Select Language</SelectLabel>
-                        {NATIONAL_LANGUAGE.map((items) => (
+                        {NATIONAL_LANGUAGE.map((items: any, index: number) => (
                           <SelectItem
                             value={items.value || language.value}
                             className="w-full"
+                            key={index}
                           >
                             <div className="flex justify-between items-center gap-4">
                               <img
@@ -123,11 +127,12 @@ const Header = () => {
             <SelectTrigger className="w-fit border-hidden">
               {NATIONAL_LANGUAGE?.filter(
                 (items) => items.value === language.value,
-              )?.map((items) => (
+              )?.map((items: any, index: number) => (
                 <img
                   src={items.img}
                   alt={items.name}
                   className="max-w-6 max-h-6"
+                  key={index}
                 />
               ))}
             </SelectTrigger>
@@ -141,10 +146,11 @@ const Header = () => {
             >
               <SelectGroup>
                 <SelectLabel>Select Language</SelectLabel>
-                {NATIONAL_LANGUAGE.map((items) => (
+                {NATIONAL_LANGUAGE.map((items: any, index: number) => (
                   <SelectItem
                     value={items.value || language.value}
                     className="w-full flex items-center"
+                    key={index}
                   >
                     <div className="flex justify-between items-center gap-4">
                       <img
@@ -192,8 +198,11 @@ const Header = () => {
                     <SelectTrigger className="w-full border-hidden">
                       {NATIONAL_LANGUAGE?.filter(
                         (items) => items.value === language.value,
-                      )?.map((items) => (
-                        <div className="w-full flex gap-4 items-center">
+                      )?.map((items: any, index: number) => (
+                        <div
+                          className="w-full flex gap-4 items-center"
+                          key={index}
+                        >
                           <img
                             src={items.img}
                             alt={items.name}
@@ -213,10 +222,11 @@ const Header = () => {
                     >
                       <SelectGroup>
                         <SelectLabel>Select Language</SelectLabel>
-                        {NATIONAL_LANGUAGE.map((items) => (
+                        {NATIONAL_LANGUAGE.map((items: any, index: number) => (
                           <SelectItem
                             value={items.value || language.value}
                             className="w-full"
+                            key={index}
                           >
                             <div className="flex justify-between items-center gap-4">
                               <img

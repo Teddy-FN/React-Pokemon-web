@@ -10,7 +10,7 @@ import {
 // Loading Skeleton
 const LoadingSkeleton = new Array(20).fill(null);
 
-const PokemonList = ({
+const PokemonLocationList = ({
   data,
   nextPage,
   prevPage,
@@ -47,23 +47,11 @@ const PokemonList = ({
         <div className="flex flex-col gap-8">
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {results.map((items: any, index: number) => {
-              const number = index + 1 + page;
               return (
                 <Card
                   className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52"
                   key={index}
                 >
-                  <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png`}
-                    alt={items.name}
-                    loading="lazy"
-                    onLoad={() => setLoading(false)}
-                    className={`${!loading ? "block" : "none"}`}
-                  />
-                  {loading && (
-                    <Skeleton className={`h-[125px] w-full rounded-xl block`} />
-                  )}
-
                   <span className="font-semibold dark:text-white">
                     {items.name}
                   </span>
@@ -95,4 +83,4 @@ const PokemonList = ({
     </ScrollArea>
   );
 };
-export default PokemonList;
+export default PokemonLocationList;
