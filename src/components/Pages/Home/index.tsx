@@ -87,8 +87,11 @@ const Home = (props: any) => {
     <ContainerMenu>
       <ScrollArea className="w-full overflow-y-auto p-4">
         <div className="max-w-full flex max-h-fit gap-10">
-          {works.map((artwork) => (
-            <div className="flex border border-slate-600 rounded-xl justify-between p-6 w-max">
+          {works.map((artwork: any, index: number) => (
+            <div
+              className="flex border border-slate-600 rounded-xl justify-between p-6 w-max"
+              key={index}
+            >
               <div className="flex flex-col gap-4 flex-1">
                 <p className="text-lg font-bold">Pokemon :</p>
                 <p className="text-md">{artwork.artist}</p>
