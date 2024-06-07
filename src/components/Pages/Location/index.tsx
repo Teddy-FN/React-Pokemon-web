@@ -13,9 +13,12 @@ import userStorePagination from "state/pagination";
 
 const Location = () => {
   const pagination = userStorePagination();
+
+  // Query
   const queryLocation = useQuery({
     queryKey: ["getPokemonLocationList", pagination.next],
-    queryFn: () => getPokemonLocationList.getPokemonLocationList(pagination.next),
+    queryFn: () =>
+      getPokemonLocationList.getPokemonLocationList(pagination.next),
   });
 
   return (

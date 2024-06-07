@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import "i18n/config";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+
 // PAGES
-// import "./components/Pages/Main/mainMenu.css";
 import Login from "./components/Pages/Auth";
 import Home from "./components/Pages/Home";
 import Location from "components/Pages/Location";
 import Games from "components/Pages/Games";
-// import Store from "@/components/Pages/Store";
-// import MainMenu from "@/components/Pages/Main";
-// import PokemonPages from "@/components/Pages/PokemonPages";
+import Berry from "components/Pages/Berry";
 import { useTranslation } from "react-i18next";
+
 // State
 import useStoreLanguage from "state/language";
 
@@ -37,6 +36,7 @@ function App() {
 
           <Route path="/games" element={<Games />} />
           <Route path="/location" element={<Location />} />
+          <Route path="/berry" element={<Berry />} />
         </Routes>
       </Router>
     </>

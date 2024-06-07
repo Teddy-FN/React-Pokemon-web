@@ -4,6 +4,7 @@ const ENDPOINTS = Object.freeze({
   getPokemonColor: "pokemon-color",
   getGeneration: "generation",
   getLocation: "location",
+  getBerry: "berry",
   getPokemonSpesies: "pokemon-species",
   getAbility: "ability",
   getPokedex: "pokedex",

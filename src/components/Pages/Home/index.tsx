@@ -73,11 +73,10 @@ import userStorePagination from "state/pagination";
 // Import Fetch
 import getPokemonList from "services/privates-routes/getPokemonList";
 
-const Home = (props: any) => {
-  console.log("props", props);
-
+const Home = () => {
   const pagination = userStorePagination();
 
+  // Query
   const queryPokemon = useQuery({
     queryKey: ["getPokemonList", pagination.next],
     queryFn: () => getPokemonList.getPokemonList(pagination.next),
