@@ -6,6 +6,7 @@ type paginationPokemonList = {
   next: number;
   handleNext: () => void;
   handlePrev: () => void;
+  handleResetNext: () => void;
 };
 
 const userStorePagination = create<paginationPokemonList>()(
@@ -19,6 +20,9 @@ const userStorePagination = create<paginationPokemonList>()(
         },
         handlePrev: () => {
           set({ next: get().next - 20 });
+        },
+        handleResetNext: () => {
+          set({ next: 0 });
         },
       }),
       {

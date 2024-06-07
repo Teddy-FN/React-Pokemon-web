@@ -8,6 +8,7 @@ import GamesList from "components/UI/Organism/GamesList";
 import getPokemonGamesList from "services/privates-routes/getPokemonGamesList";
 
 const Games = () => {
+  // Query
   const getGames = useQuery({
     queryKey: ["getGames"],
     queryFn: () => getPokemonGamesList.getPokemonGameList(),
