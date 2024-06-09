@@ -41,7 +41,7 @@ const PokemonBerryList = ({
     }
 
     if (data?.isSuccess && !data?.isError && data?.data) {
-      const { results } = data.data;
+      const { results, next, previous } = data.data;
 
       return (
         <div className="flex flex-col gap-8">
@@ -62,14 +62,16 @@ const PokemonBerryList = ({
           <div
             className={`flex ${page >= 20 ? "justify-between" : "justify-end"} items-center`}
           >
-            {page >= 20 && (
+            {page >= 20 && previous && (
               <Button className="w-fit" onClick={prevPage}>
                 Previous
               </Button>
             )}
-            <Button className="w-fit" onClick={nextPage}>
-              Next
-            </Button>
+            {next && (
+              <Button className="w-fit" onClick={nextPage}>
+                Next
+              </Button>
+            )}
           </div>
         </div>
       );

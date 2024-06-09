@@ -1,6 +1,14 @@
 import React from "react";
 import ContainerMenu from "components/UI/Organism/ContainerMenu";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+} from "components/UI/Atoms/Breadcrumb/breadcrumb";
 
 // Organism Component
 import PokemonLocationList from "components/UI/Organism/PokemonLocationList";
@@ -12,6 +20,7 @@ import getPokemonLocationList from "services/privates-routes/getPokemonLocationL
 import userStorePagination from "state/pagination";
 
 const Location = () => {
+  const navigate = useNavigate();
   const pagination = userStorePagination();
 
   // Query
@@ -24,6 +33,16 @@ const Location = () => {
   return (
     <ContainerMenu>
       <div className="p-4">
+        <Breadcrumb className="mb-10">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink className="cursor-pointer">
+                <p onClick={() => navigate("/location")}>Location List</p>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
         <PokemonLocationList
           data={queryLocation}
           nextPage={() => pagination.handleNext()}
