@@ -1,6 +1,15 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
+import { useNavigate } from "react-router-dom";
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+} from "components/UI/Atoms/Breadcrumb/breadcrumb";
+
 export interface Artwork {
   artist: string;
   art: string;
@@ -74,6 +83,7 @@ import userStorePagination from "state/pagination";
 import getPokemonList from "services/privates-routes/getPokemonList";
 
 const Home = () => {
+  const navigate = useNavigate();
   const pagination = userStorePagination();
 
   // Query
@@ -84,31 +94,41 @@ const Home = () => {
 
   return (
     <ContainerMenu>
-      <ScrollArea className="w-full overflow-y-auto p-4">
-        <div className="max-w-full flex max-h-fit gap-10">
-          {works.map((artwork: any, index: number) => (
-            <div
-              className="flex border border-slate-600 rounded-xl justify-between p-6 w-max"
-              key={index}
-            >
-              <div className="flex flex-col gap-4 flex-1">
-                <p className="text-lg font-bold">Pokemon :</p>
-                <p className="text-md">{artwork.artist}</p>
-              </div>
-              <div className="flex-1">
-                <img
-                  src={artwork.art}
-                  alt={`Photo by ${artwork.artist}`}
-                  className="w-full h-full object-cover"
-                  width="100%"
-                />
-              </div>
-            </div>
-          ))}
-          <ScrollBar orientation="horizontal" />
-        </div>
-      </ScrollArea>
       <div className="p-4">
+        <Breadcrumb className="mb-10">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink className="cursor-pointer">
+                <p onClick={() => navigate("/")}>Pokemon List</p>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <ScrollArea className="w-full overflow-y-auto mb-10">
+          <div className="max-w-full flex max-h-fit gap-10">
+            {works.map((artwork: any, index: number) => (
+              <div
+                className="flex border border-slate-600 rounded-xl justify-between p-6 w-max"
+                key={index}
+              >
+                <div className="flex flex-col gap-4 flex-1">
+                  <p className="text-lg font-bold">Pokemon :</p>
+                  <p className="text-md">{artwork.artist}</p>
+                </div>
+                <div className="flex-1">
+                  <img
+                    src={artwork.art}
+                    alt={`Photo by ${artwork.artist}`}
+                    className="w-full h-full object-cover"
+                    width="100%"
+                  />
+                </div>
+              </div>
+            ))}
+            <ScrollBar orientation="horizontal" className="hidden" />
+          </div>
+        </ScrollArea>
         <PokemonList
           data={queryPokemon}
           nextPage={() => pagination.handleNext()}

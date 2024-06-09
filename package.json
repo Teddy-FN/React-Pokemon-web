@@ -53,6 +53,7 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.1.6",
+    "vaul": "^0.9.1",
     "web-vitals": "^2.1.4",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
