@@ -88,8 +88,9 @@ const Home = () => {
 
   // Query
   const queryPokemon = useQuery({
-    queryKey: ["getPokemonList", pagination.next],
-    queryFn: () => getPokemonList.getPokemonList(pagination.next),
+    queryKey: ["getPokemonList", pagination.next, pagination.offset],
+    queryFn: () =>
+      getPokemonList.getPokemonList(pagination.next, pagination.offset),
   });
 
   return (
@@ -134,6 +135,8 @@ const Home = () => {
           nextPage={() => pagination.handleNext()}
           prevPage={() => pagination.handlePrev()}
           page={pagination.next}
+          offset={pagination.offset}
+          handleChangeOffset={(e: any) => pagination.handleChangeOffet(e)}
         />
       </div>
     </ContainerMenu>

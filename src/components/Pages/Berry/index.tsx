@@ -25,10 +25,13 @@ const Berry = () => {
 
   // Query
   const getBerry = useQuery({
-    queryKey: ["getBerry", pagination.next],
-    queryFn: () => getPokemonBerryList.getPokemonBerryList(pagination.next),
+    queryKey: ["getBerry", pagination.next, pagination.offset],
+    queryFn: () =>
+      getPokemonBerryList.getPokemonBerryList(
+        pagination.next,
+        pagination.offset,
+      ),
   });
-  console.log(getBerry);
 
   return (
     <ContainerMenu>
@@ -48,6 +51,8 @@ const Berry = () => {
           nextPage={() => pagination.handleNext()}
           prevPage={() => pagination.handlePrev()}
           page={pagination.next}
+          offset={pagination.offset}
+          handleChangeOffset={(e: any) => pagination.handleChangeOffet(e)}
         />
       </div>
     </ContainerMenu>
