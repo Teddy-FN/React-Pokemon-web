@@ -1,4 +1,14 @@
 import React, { useMemo, useState } from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "components/UI/Atoms/Select/select";
 import { Button } from "components/UI/Atoms/Button/button";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
 import { Card } from "components/UI/Atoms/Card/card";
@@ -8,33 +18,36 @@ import {
 } from "components/UI/Atoms/ScrollArea/scroll-area";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "components/UI/Atoms/Drawer/drawer";
 
-// Loading Skeleton
-const LoadingSkeleton = new Array(20).fill(null);
+import DrawerContentPokemonDetail from "components/UI/Molecule/DrawerContentPokemonDetail";
+
+// Utils
+import { selectCountPokemon } from "utils/constant";
 
 const PokemonList = ({
   data,
   nextPage,
   prevPage,
   page,
+  offset,
+  handleChangeOffset,
 }: {
   data: any;
   nextPage: any;
   prevPage: any;
   page: number;
+  offset: number;
+  handleChangeOffset: any;
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<Boolean>(true);
+  const [pokemonId, setPokemonId] = useState<number>(0);
 
   const RENDER_DATA = useMemo(() => {
     if (data?.isLoading) {
+      const LoadingSkeleton = new Array(Number(offset)).fill(null);
       return (
         <div className="flex flex-col gap-8">
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -55,11 +68,31 @@ const PokemonList = ({
 
       return (
         <div className="flex flex-col gap-8">
+          <div className="flex justify-end">
+            <Select
+              onValueChange={handleChangeOffset}
+              value={offset.toString()}
+            >
+              <SelectTrigger className="w-[280px]">
+                <SelectValue placeholder="Select Count Pokemon" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Select Pokemon</SelectLabel>
+                  {selectCountPokemon.map((items: number, index: number) => (
+                    <SelectItem value={items.toString()} key={index}>
+                      {items}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {results.map((items: any, index: number) => {
               const number = index + 1 + page;
               return (
-                <DrawerTrigger asChild>
+                <DrawerTrigger asChild onClick={() => setPokemonId(number)}>
                   <Card
                     className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52"
                     key={index}
@@ -69,7 +102,7 @@ const PokemonList = ({
                       alt={items.name}
                       loading="lazy"
                       onLoad={() => setLoading(false)}
-                      className={`${!loading ? "block" : "none"}`}
+                      className={`${!loading ? "block" : "none"} w-full h-full`}
                     />
                     {loading && (
                       <Skeleton
@@ -102,7 +135,7 @@ const PokemonList = ({
         </div>
       );
     }
-  }, [data, loading, setLoading]);
+  }, [data, offset, handleChangeOffset, loading, setLoading, setPokemonId]);
 
   return (
     <ScrollArea className="w-full whitespace-nowrap rounded-md">
@@ -110,42 +143,7 @@ const PokemonList = ({
       <Drawer>
         {RENDER_DATA}
         <DrawerContent>
-          <div className="mx-auto w-full max-w-sm">
-            <DrawerHeader>
-              <DrawerTitle>Move Goal</DrawerTitle>
-              <DrawerDescription>
-                Set your daily activity goal.
-              </DrawerDescription>
-            </DrawerHeader>
-            <div className="p-4 pb-0">
-              <div className="flex items-center justify-center space-x-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8 shrink-0 rounded-full"
-                >
-                  {/* <MinusIcon className="h-4 w-4" /> */}
-                  <span className="sr-only">Decrease</span>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8 shrink-0 rounded-full"
-                >
-                  {/* <PlusIcon className="h-4 w-4" /> */}
-                  <span className="sr-only">Increase</span>
-                </Button>
-              </div>
-              <div className="mt-3 h-[120px]">HELO</div>
-            </div>
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </div>
+          <DrawerContentPokemonDetail id={pokemonId} />
         </DrawerContent>
       </Drawer>
 

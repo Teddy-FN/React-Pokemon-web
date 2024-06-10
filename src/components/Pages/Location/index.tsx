@@ -25,9 +25,12 @@ const Location = () => {
 
   // Query
   const queryLocation = useQuery({
-    queryKey: ["getPokemonLocationList", pagination.next],
+    queryKey: ["getPokemonLocationList", pagination.next, pagination.offset],
     queryFn: () =>
-      getPokemonLocationList.getPokemonLocationList(pagination.next),
+      getPokemonLocationList.getPokemonLocationList(
+        pagination.next,
+        pagination.offset,
+      ),
   });
 
   return (
@@ -48,6 +51,8 @@ const Location = () => {
           nextPage={() => pagination.handleNext()}
           prevPage={() => pagination.handlePrev()}
           page={pagination.next}
+          offset={pagination.offset}
+          handleChangeOffset={(e: any) => pagination.handleChangeOffet(e)}
         />
       </div>
     </ContainerMenu>

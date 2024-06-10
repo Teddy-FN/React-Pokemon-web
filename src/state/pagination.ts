@@ -4,9 +4,11 @@ import { persist, devtools, createJSONStorage } from "zustand/middleware";
 
 type paginationPokemonList = {
   next: number;
+  offset: number;
   handleNext: () => void;
   handlePrev: () => void;
   handleResetNext: () => void;
+  handleChangeOffet: (numb: number) => void;
 };
 
 const userStorePagination = create<paginationPokemonList>()(
@@ -14,8 +16,8 @@ const userStorePagination = create<paginationPokemonList>()(
     persist(
       (set, get) => ({
         next: 0,
+        offset: 20,
         handleNext: () => {
-          console.log("WASSUP");
           set({ next: get().next + 20 });
         },
         handlePrev: () => {
@@ -23,6 +25,12 @@ const userStorePagination = create<paginationPokemonList>()(
         },
         handleResetNext: () => {
           set({ next: 0 });
+        },
+        handleChangeOffet: (numb) => {
+          console.log(numb);
+          set({
+            offset: numb,
+          });
         },
       }),
       {

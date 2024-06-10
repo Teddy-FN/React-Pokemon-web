@@ -19,3 +19,5 @@ export const NATIONAL_LANGUAGE = [
     value: "jpn",
   },
 ] as const;
+
+export const selectCountPokemon = [5, 10, 15, 20, 25, 30, 35, 40] as const;

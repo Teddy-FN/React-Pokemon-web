@@ -1,4 +1,15 @@
 import React, { useMemo, useState } from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "components/UI/Atoms/Select/select";
+
 import { Button } from "components/UI/Atoms/Button/button";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
 import { Card } from "components/UI/Atoms/Card/card";
@@ -7,24 +18,29 @@ import {
   ScrollBar,
 } from "components/UI/Atoms/ScrollArea/scroll-area";
 
-// Loading Skeleton
-const LoadingSkeleton = new Array(20).fill(null);
+// Utils
+import { selectCountPokemon } from "utils/constant";
 
 const PokemonBerryList = ({
   data,
   nextPage,
   prevPage,
   page,
+  offset,
+  handleChangeOffset,
 }: {
   data: any;
   nextPage: any;
   prevPage: any;
   page: number;
+  offset: number;
+  handleChangeOffset: any;
 }) => {
   const [loading, setLoading] = useState(true);
 
   const RENDER_DATA = useMemo(() => {
     if (data?.isLoading) {
+      const LoadingSkeleton = new Array(Number(offset)).fill(null);
       return (
         <div className="flex flex-col gap-8">
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -45,6 +61,26 @@ const PokemonBerryList = ({
 
       return (
         <div className="flex flex-col gap-8">
+          <div className="flex justify-end">
+            <Select
+              onValueChange={handleChangeOffset}
+              value={offset.toString()}
+            >
+              <SelectTrigger className="w-[280px]">
+                <SelectValue placeholder="Select Count Pokemon" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Select Pokemon</SelectLabel>
+                  {selectCountPokemon.map((items: number, index: number) => (
+                    <SelectItem value={items.toString()} key={index}>
+                      {items}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {results.map((items: any, index: number) => {
               return (
@@ -76,7 +112,7 @@ const PokemonBerryList = ({
         </div>
       );
     }
-  }, [data, loading, setLoading]);
+  }, [data, offset, handleChangeOffset, loading, setLoading]);
 
   return (
     <ScrollArea className="w-full whitespace-nowrap rounded-md">
