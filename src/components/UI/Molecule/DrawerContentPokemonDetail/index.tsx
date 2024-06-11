@@ -1,73 +1,91 @@
+/* eslint-disable no-unused-vars */
 import React, { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-// import { Button } from "components/UI/Atoms/Button/button";
+// Atoms Components
 import {
-  // DrawerClose,
   DrawerDescription,
-  // DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "components/UI/Atoms/Drawer/drawer";
-
-// Fetch
-import getPokemonDetail from "services/privates-routes/getPokemonDetail";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
+import { Button } from "components/UI/Atoms/Button/button";
+
+// Fetching
+import getPokemonDetail from "services/privates-routes/getPokemonDetail";
+
+// Utils
+import { backgroundColoring } from "utils/constant";
 
 const DrawerContentPokemonDetail = ({ id }: { id: number }) => {
   // Query
   const pokemonDetail = useQuery({
     queryKey: ["getPokemonList"],
     queryFn: () => getPokemonDetail.getPokemonDetail(id),
+    retry: 0,
   });
 
-  console.log("pokemonDetail =>", pokemonDetail);
-
-  // img : front_default
-  // name : name
-  // types : types
-  // height : height
-  // weight : weight
-
   const DETAIL_POKEMON = useMemo(() => {
-    if (pokemonDetail?.isLoading && !pokemonDetail?.data) {
-      return <Skeleton className="h-[350px] w-full rounded-xl" />;
+    if (pokemonDetail?.isLoading || pokemonDetail.isRefetching) {
+      return <Skeleton className="h-[500px] md:h-[350px] w-full rounded-xl" />;
     }
 
     if (pokemonDetail?.data && pokemonDetail?.isSuccess) {
       const { data }: { data: any } = pokemonDetail;
       return (
-        <>
+        <React.Fragment>
           <DrawerHeader>
             <DrawerTitle className="text-center">{data?.name}</DrawerTitle>
             <DrawerDescription className="text-center">
               Pokemon Detail
             </DrawerDescription>
           </DrawerHeader>
-          <div className="flex items-center justify-center">
-            <div className="flex-1">
+          <div className="flex justify-center flex-col md:flex-row">
+            <div className="flex-1 flex justify-center">
               <img
                 src={data?.sprites.front_default}
                 alt={data?.name}
                 className="w-full h-full"
               />
             </div>
-            <div className="flex-1 flex-col justify-between">
-              <div className="flex gap-4 items-center">
+            <div className="flex-1 flex gap-4 flex-col mb-8 md:mb-0">
+              <div className="flex gap-4 items-center justify-center md:justify-start">
                 {data?.types.map((items: any, index: number) => {
-                  console.log("ITEMS =>", items);
-                  return <p key={index}>{items.type.name}</p>;
+                  const filteringColor = Object.entries(
+                    backgroundColoring,
+                  ).filter(
+                    ([key, _]: [string, any]) => key === items?.type.name,
+                  )[0];
+                  const [_, hexColor] = filteringColor;
+                  return (
+                    <p
+                      key={index}
+                      className="py-2 px-4 rounded-[50px] font-bold text-lg text-white"
+                      style={{
+                        backgroundColor: `${hexColor}`,
+                      }}
+                    >
+                      {items.type.name}
+                    </p>
+                  );
                 })}
               </div>
-              <p>Height : {data?.height}</p>
-              <p>Weight : {data?.weight}</p>
+              <div className="flex flex-col items-center md:flex-row md:justify-between">
+                <p>Height : {data?.height}</p>
+                <p>Weight : {data?.weight}</p>
+              </div>
+              <Button className="mx-10 md:mx-0">See Detail</Button>
             </div>
           </div>
-        </>
+        </React.Fragment>
       );
     }
   }, [pokemonDetail]);
 
-  return <div className="mx-auto w-full md:max-w-sm">{DETAIL_POKEMON}</div>;
+  return (
+    <div className="mx-auto w-full md:max-w-sm overflow-auto">
+      {DETAIL_POKEMON}
+    </div>
+  );
 };
 export default DrawerContentPokemonDetail;
