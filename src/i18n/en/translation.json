@@ -23,5 +23,10 @@
   "logInWithGoogle": "Log In With Google",
   "signUpWithGoogle": "Sign Up With Google",
   "logInWithFacebook": "Log In With Facebook",
-  "signUpWithFacebook": "Sign Up With Facebook"
+  "signUpWithFacebook": "Sign Up With Facebook",
+
+  "titleDrawerDetailPokemon": "Pokemon Detail",
+  "height": "Height",
+  "weight": "Weight",
+  "seeDetail": "See Detail"
 }

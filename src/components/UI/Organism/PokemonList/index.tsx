@@ -117,7 +117,7 @@ const PokemonList = ({
                     />
                     {loading && (
                       <Skeleton
-                        className={`h-[125px] w-full rounded-xl block`}
+                        className={`h-[200px] w-full rounded-xl block`}
                       />
                     )}
 

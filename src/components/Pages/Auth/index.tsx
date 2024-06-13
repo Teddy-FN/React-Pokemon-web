@@ -24,7 +24,7 @@ import FormRegister from "components/UI/Molecule/Form/formRegister";
 import Video from "assets/video/video.mp4";
 import useStoreUser from "state/authUser";
 
-const Login = () => {
+const Login: React.FC = () => {
   const user = useStoreUser((state: any) => state);
   const { t } = useTranslation();
   const translation = useMemo(

@@ -23,5 +23,10 @@
   "logInWithGoogle": "Googleでログイン",
   "signUpWithGoogle": "Google に登録する",
   "logInWithFacebook": "Facebookでログイン",
-  "signUpWithFacebook": "Facebookでサインアップ"
+  "signUpWithFacebook": "Facebookでサインアップ",
+
+  "titleDrawerDetailPokemon": "ポケモンの詳細",
+  "height": "身長",
+  "weight": "重さ",
+  "seeDetail": "詳細を見る"
 }
