@@ -6,9 +6,10 @@
     "target": "ES6",
     "noImplicitAny": true,
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "src"
   },
   "include": ["src"]

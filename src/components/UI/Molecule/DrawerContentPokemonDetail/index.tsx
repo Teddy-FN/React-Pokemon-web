@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 // Atoms Components
 import {
@@ -18,6 +20,18 @@ import getPokemonDetail from "services/privates-routes/getPokemonDetail";
 import { backgroundColoring } from "utils/constant";
 
 const DrawerContentPokemonDetail = ({ id }: { id: number }) => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const translation = useMemo(
+    () => ({
+      titleDrawerDetailPokemon: t("translation:titleDrawerDetailPokemon"),
+      weight: t("translation:weight"),
+      height: t("translation:height"),
+      seeDetail: t("translation:seeDetail"),
+    }),
+    [t],
+  );
+
   // Query
   const pokemonDetail = useQuery({
     queryKey: ["getPokemonList"],
@@ -37,7 +51,7 @@ const DrawerContentPokemonDetail = ({ id }: { id: number }) => {
           <DrawerHeader>
             <DrawerTitle className="text-center">{data?.name}</DrawerTitle>
             <DrawerDescription className="text-center">
-              Pokemon Detail
+              {translation.titleDrawerDetailPokemon}
             </DrawerDescription>
           </DrawerHeader>
           <div className="flex justify-center flex-col md:flex-row">
@@ -71,10 +85,19 @@ const DrawerContentPokemonDetail = ({ id }: { id: number }) => {
                 })}
               </div>
               <div className="flex flex-col items-center md:flex-row md:justify-between">
-                <p>Height : {data?.height}</p>
-                <p>Weight : {data?.weight}</p>
+                <p>
+                  {translation.height} : {data?.height}
+                </p>
+                <p>
+                  {translation.weight} : {data?.weight}
+                </p>
               </div>
-              <Button className="mx-10 md:mx-0">See Detail</Button>
+              <Button
+                className="mx-10 md:mx-0"
+                onClick={() => navigate(`/pokemon/${data?.name}/${data?.id}`)}
+              >
+                {translation.seeDetail}
+              </Button>
             </div>
           </div>
         </React.Fragment>

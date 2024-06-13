@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import "i18n/config";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-
-// PAGES
-import Login from "./components/Pages/Auth";
-import Home from "./components/Pages/Home";
-import Location from "components/Pages/Location";
-import Games from "components/Pages/Games";
-import Berry from "components/Pages/Berry";
 import { useTranslation } from "react-i18next";
+
+// Pages
+const Login = React.lazy(() => import("components/Pages/Auth"));
+const PokemonList = React.lazy(() => import("components/Pages/Pokemon"));
+const PokemonDetail = React.lazy(
+  () => import("components/Pages/Pokemon/PokemonDetail"),
+);
+const Location = React.lazy(() => import("components/Pages/Location"));
+const Games = React.lazy(() => import("components/Pages/Games"));
+const Berry = React.lazy(() => import("components/Pages/Berry"));
 
 // State
 import useStoreLanguage from "state/language";
@@ -37,12 +40,9 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route index path="/" element={<PokemonList />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />}>
-            {/* <Route path="/" element={<MainMenu />} /> */}
-            {/* <Route path="/store" element={<Store />} /> */}
-            {/* <Route path="/pokemon" element={<PokemonPages />} /> */}
-          </Route>
+          <Route path="/pokemon/:name/:id" element={<PokemonDetail />} />
 
           <Route path="/games" element={<Games />} />
           <Route path="/location" element={<Location />} />

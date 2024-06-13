@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import ContainerMenu from "components/UI/Organism/ContainerMenu";
 import { useNavigate } from "react-router-dom";
 
+// Atoms
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,27 +10,29 @@ import {
   BreadcrumbList,
 } from "components/UI/Atoms/Breadcrumb/breadcrumb";
 
-import PokemonBerryList from "components/UI/Organism/PokemonBerryList";
+// Organism Component
+const ContainerMenu = React.lazy(
+  () => import("components/UI/Organism/ContainerMenu"),
+);
+const PokemonList = React.lazy(
+  () => import("components/UI/Organism/PokemonList"),
+);
 
 // State
 import userStorePagination from "state/pagination";
 
-// Fetch
-import getPokemonBerryList from "services/privates-routes/getPokemonBerryList";
+// Import Fetch
+import getPokemonList from "services/privates-routes/getPokemonList";
 
-const Berry: React.FC = () => {
+const Pokemon = () => {
+  const navigate = useNavigate();
   const pagination = userStorePagination();
 
-  const navigate = useNavigate();
-
   // Query
-  const getBerry = useQuery({
-    queryKey: ["getBerry", pagination.next, pagination.offset],
+  const queryPokemon = useQuery({
+    queryKey: ["getPokemonList", pagination.next, pagination.offset],
     queryFn: () =>
-      getPokemonBerryList.getPokemonBerryList(
-        pagination.next,
-        pagination.offset,
-      ),
+      getPokemonList.getPokemonList(pagination.next, pagination.offset),
   });
 
   return (
@@ -40,14 +42,14 @@ const Berry: React.FC = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink className="cursor-pointer">
-                <p onClick={() => navigate("/berry")}>Berries</p>
+                <p onClick={() => navigate("/")}>Pokemon List</p>
               </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
-        <PokemonBerryList
-          data={getBerry}
+        <PokemonList
+          data={queryPokemon}
           nextPage={() => pagination.handleNext()}
           prevPage={() => pagination.handlePrev()}
           page={pagination.next}
@@ -58,4 +60,5 @@ const Berry: React.FC = () => {
     </ContainerMenu>
   );
 };
-export default Berry;
+
+export default Pokemon;

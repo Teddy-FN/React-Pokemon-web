@@ -16,7 +16,7 @@ import GamesList from "components/UI/Organism/GamesList";
 // Fetch
 import getPokemonGamesList from "services/privates-routes/getPokemonGamesList";
 
-const Games = () => {
+const Games: React.FC = () => {
   const navigate = useNavigate();
 
   // Query

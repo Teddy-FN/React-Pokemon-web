@@ -23,5 +23,10 @@
   "logInWithGoogle": "Masuk Dengan Google",
   "signUpWithGoogle": "Daftar Dengan Google",
   "logInWithFacebook": "Masuk Dengan Facebook",
-  "signUpWithFacebook": "Daftar Dengan Facebook"
+  "signUpWithFacebook": "Daftar Dengan Facebook",
+
+  "titleDrawerDetailPokemon": "Detail Pokemon",
+  "height": "Tinggi",
+  "weight": "Berat",
+  "seeDetail": "Lihat Detail"
 }

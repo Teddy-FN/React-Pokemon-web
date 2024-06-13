@@ -19,7 +19,7 @@ import getPokemonLocationList from "services/privates-routes/getPokemonLocationL
 // State
 import userStorePagination from "state/pagination";
 
-const Location = () => {
+const Location: React.FC = () => {
   const navigate = useNavigate();
   const pagination = userStorePagination();
 
