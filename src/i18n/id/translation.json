@@ -1,4 +1,13 @@
 {
+  "pokemonList": "Daftar Pokemon",
+  "games": "Permainan",
+  "locations": "Lokasi",
+  "Berries": "Beri",
+
+  "next": "Selanjutnya",
+  "previous": "Sebelumnya",
+  "selectPokemon": "Pilih Pokemon",
+
   "email": "Email",
   "firstName": "Nama Depan",
   "lastName": "Nama Belakang",

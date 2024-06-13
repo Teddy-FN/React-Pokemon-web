@@ -1,4 +1,7 @@
 import React, { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+// Atoms
 import { Button } from "components/UI/Atoms/Button/button";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
 import { Card } from "components/UI/Atoms/Card/card";
@@ -6,7 +9,6 @@ import {
   ScrollArea,
   ScrollBar,
 } from "components/UI/Atoms/ScrollArea/scroll-area";
-
 import {
   Select,
   SelectContent,
@@ -35,7 +37,17 @@ const PokemonLocationList = ({
   offset: number;
   handleChangeOffset: any;
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { t } = useTranslation();
+
+  const translation = useMemo(
+    () => ({
+      next: t("translation:next"),
+      previous: t("translation:previous"),
+      selectPokemon: t("translation:selectPokemon"),
+    }),
+    [t],
+  );
 
   const RENDER_DATA = useMemo(() => {
     if (data?.isLoading) {
@@ -70,7 +82,7 @@ const PokemonLocationList = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Select Pokemon</SelectLabel>
+                  <SelectLabel>{translation.selectPokemon}</SelectLabel>
                   {selectCountPokemon.map((items: number, index: number) => (
                     <SelectItem value={items.toString()} key={index}>
                       {items}
@@ -99,19 +111,19 @@ const PokemonLocationList = ({
           >
             {page >= 20 && previous && (
               <Button className="w-fit" onClick={prevPage}>
-                Previous
+                {translation.previous}
               </Button>
             )}
             {next && (
               <Button className="w-fit" onClick={nextPage}>
-                Next
+                {translation.next}
               </Button>
             )}
           </div>
         </div>
       );
     }
-  }, [data, offset, handleChangeOffset, loading, setLoading]);
+  }, [data, offset, handleChangeOffset, loading, translation, setLoading]);
 
   return (
     <ScrollArea className="w-full whitespace-nowrap rounded-md">

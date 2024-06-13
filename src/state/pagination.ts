@@ -24,7 +24,7 @@ const userStorePagination = create<paginationPokemonList>()(
           set({ next: get().next - 20 });
         },
         handleResetNext: () => {
-          set({ next: 0 });
+          set({ next: 0, offset: 20 });
         },
         handleChangeOffet: (numb) => {
           console.log(numb);

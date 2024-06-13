@@ -1,4 +1,13 @@
 {
+  "pokemonList": "Pokemon List",
+  "games": "Games",
+  "locations": "Locations",
+  "Berries": "Berries",
+
+  "next": "Next",
+  "previous": "Previous",
+  "selectPokemon": "Select Pokemon",
+
   "email": "Email",
   "password": "Password",
   "firstName": "First Name",

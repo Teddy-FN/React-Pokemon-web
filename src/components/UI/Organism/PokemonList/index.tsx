@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Select,
@@ -42,8 +43,18 @@ const PokemonList = ({
   offset: number;
   handleChangeOffset: any;
 }) => {
-  const [loading, setLoading] = useState<Boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [pokemonId, setPokemonId] = useState<number>(0);
+  const { t } = useTranslation();
+
+  const translation = useMemo(
+    () => ({
+      previous: t("translation:previous"),
+      next: t("translation:next"),
+      selectPokemon: t("translation:selectPokemon"),
+    }),
+    [t],
+  );
 
   const RENDER_DATA = useMemo(() => {
     if (data?.isLoading) {
@@ -78,7 +89,7 @@ const PokemonList = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Select Pokemon</SelectLabel>
+                  <SelectLabel>{translation.selectPokemon}</SelectLabel>
                   {selectCountPokemon.map((items: number, index: number) => (
                     <SelectItem value={items.toString()} key={index}>
                       {items}
@@ -123,19 +134,27 @@ const PokemonList = ({
           >
             {page >= 20 && previous && (
               <Button className="w-fit" onClick={prevPage}>
-                Previous
+                {translation.previous}
               </Button>
             )}
             {next && (
               <Button className="w-fit" onClick={nextPage}>
-                Next
+                {translation.next}
               </Button>
             )}
           </div>
         </div>
       );
     }
-  }, [data, offset, handleChangeOffset, loading, setLoading, setPokemonId]);
+  }, [
+    data,
+    offset,
+    handleChangeOffset,
+    loading,
+    translation,
+    setLoading,
+    setPokemonId,
+  ]);
 
   return (
     <ScrollArea className="w-full whitespace-nowrap rounded-md">

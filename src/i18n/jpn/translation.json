@@ -1,4 +1,13 @@
 {
+  "pokemonList": "ポケモン一覧",
+  "games": "ゲーム",
+  "locations": "位置",
+  "Berries": "与える",
+
+  "next": "さらに",
+  "previous": "以前",
+  "selectPokemon": "ポケモンを選択",
+
   "email": "Eメール",
   "password": "パスワード",
   "firstName": "ファーストネーム",
