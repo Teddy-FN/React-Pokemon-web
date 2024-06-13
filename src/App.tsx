@@ -12,16 +12,26 @@ import { useTranslation } from "react-i18next";
 
 // State
 import useStoreLanguage from "state/language";
+import useStoreTheme from "state/theme";
 
 function App() {
   const { i18n } = useTranslation();
   const language = useStoreLanguage();
+  const theme = useStoreTheme();
 
   useEffect(() => {
     if (language.value) {
       i18n.changeLanguage(language.value);
     }
   }, [language.value]);
+
+  useEffect(() => {
+    if (theme.theme) {
+      document.querySelector("html")?.classList.add("dark");
+    } else {
+      document.querySelector("html")?.classList.remove("dark");
+    }
+  }, [theme.theme]);
 
   return (
     <>

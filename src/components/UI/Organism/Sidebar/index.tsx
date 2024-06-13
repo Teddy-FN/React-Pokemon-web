@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { GiWoodCabin, GiGamepad, GiTrail, GiFruitBowl } from "react-icons/gi";
+
+import { useTranslation } from "react-i18next";
 
 // Import Images
 import IconLogo from "assets/img/pokeball.png";
@@ -11,6 +13,19 @@ import userStorePagination from "state/pagination";
 const SideBar = () => {
   // We Will Reset Pagination to 1 when user click / change Menu
   const pagination = userStorePagination();
+
+  // Translation
+  const { t } = useTranslation();
+
+  const translation = useMemo(
+    () => ({
+      pokemonList: t("translation:pokemonList"),
+      gamesList: t("translation:games"),
+      locationList: t("translation:locations"),
+      berriesList: t("translation:Berries"),
+    }),
+    [t],
+  );
 
   return (
     <div className="flex flex-col gap-10 px-4 py-10">
@@ -34,7 +49,7 @@ const SideBar = () => {
           onClick={() => pagination.handleResetNext()}
         >
           <GiWoodCabin className="h-8 w-8" />
-          <p className="font-bold text-base">Home</p>
+          <p className="font-bold text-base">{translation.pokemonList}</p>
         </Link>
         <Link
           to="/games"
@@ -42,7 +57,7 @@ const SideBar = () => {
           onClick={() => pagination.handleResetNext()}
         >
           <GiGamepad className="h-8 w-8" />
-          <p className="font-bold text-base">Games</p>
+          <p className="font-bold text-base">{translation.gamesList}</p>
         </Link>
         <Link
           to="/location"
@@ -50,7 +65,7 @@ const SideBar = () => {
           onClick={() => pagination.handleResetNext()}
         >
           <GiTrail className="h-8 w-8" />
-          <p className="font-bold text-base">Locations</p>
+          <p className="font-bold text-base">{translation.locationList}</p>
         </Link>
         <Link
           to="/berry"
@@ -58,7 +73,7 @@ const SideBar = () => {
           onClick={() => pagination.handleResetNext()}
         >
           <GiFruitBowl className="h-8 w-8" />
-          <p className="font-bold text-base">Berries</p>
+          <p className="font-bold text-base">{translation.berriesList}</p>
         </Link>
       </div>
     </div>
