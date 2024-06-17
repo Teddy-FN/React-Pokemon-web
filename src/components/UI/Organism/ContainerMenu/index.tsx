@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
 // Components
@@ -13,7 +14,7 @@ import Header from "components/UI/Organism/Header";
 
 const ContainerMenu = ({ children }: { children: any }) => {
   return (
-    <div className="w-full h-screen ">
+    <div className="w-full h-screen">
       <ResizablePanelGroup direction="horizontal" className="max-w-full">
         <ResizablePanel defaultSize={4} className="hidden md:inline">
           <SideBar />
