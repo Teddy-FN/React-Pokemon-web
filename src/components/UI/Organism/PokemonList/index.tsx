@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/jsx-key */
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -105,7 +107,7 @@ const PokemonList = ({
               return (
                 <DrawerTrigger asChild onClick={() => setPokemonId(number)}>
                   <Card
-                    className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52"
+                    className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52 md:grayscale md:hover:grayscale-0 transition ease-out delay-150"
                     key={index}
                   >
                     <img
