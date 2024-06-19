@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -13,7 +14,6 @@ import {
 } from "components/UI/Atoms/Select/select";
 import { Button } from "components/UI/Atoms/Button/button";
 import { Skeleton } from "components/UI/Atoms/Skeleton/skeleton";
-import { Card } from "components/UI/Atoms/Card/card";
 import {
   ScrollArea,
   ScrollBar,
@@ -21,6 +21,7 @@ import {
 
 // Utils
 import { selectCountPokemon } from "utils/constant";
+import CardListName from "components/UI/Molecule/CardList/CardListName";
 
 const PokemonBerryList = ({
   data,
@@ -92,20 +93,10 @@ const PokemonBerryList = ({
               </SelectContent>
             </Select>
           </div>
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-            {results.map((items: any, index: number) => {
-              return (
-                <Card
-                  className="p-4 bg-white-100 dark:bg-gray-500 border shadow-md flex justify-center items-center flex-col rounded-lg min-h-52"
-                  key={index}
-                >
-                  <span className="font-semibold dark:text-white">
-                    {items.name}
-                  </span>
-                </Card>
-              );
-            })}
-          </div>
+
+          {/* Card List */}
+          <CardListName results={results} />
+
           <div
             className={`flex ${page >= 20 ? "justify-between" : "justify-end"} items-center`}
           >
